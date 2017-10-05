@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SEProject</title>
+    <link rel="icon" href="public/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/style.css">
+    <!--Scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">       
+        <div>
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">SEProject</a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Tool Library</a></li>
+                        <li class="active"><a href="#">Machines</a></li>                                                
+                    </ul>
+                </div>
+            </nav>  
+        </div>
+        <!--Machines-->
+        <div class="col-sm-3">
+            <h3>Machines</h3>
+            <div v-for="(machine, index) in machines">
+                <button type="button" class="btn-primary btn-lg mBtn" v-on:click="getContent(index)">{{machine.mName}}</button>
+            </div>
+        </div>
+        <!--Machine's tools-->
+        <div class="col-sm-5">
+            <h3>Machine's tools</h3>
+            <div>
+                <table class='table table-hover'>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Tool Category</th>
+                        <th>Hit Count</th>
+                    </tr>
+                    <!--Tool table content-->
+                    <div>
+                        <tr v-for="c in content">
+                            <td>{{c.tName}}</td>
+                            <td>{{c.tCategory}}</td>
+                            <td>{{c.hitCount}}</td>
+                        </tr>
+                    </div>
+                </table>
+
+            </div>
+        </div>
+        <!--Tool details-->
+        <div class="col-sm-4">
+            <h3>Tool details</h3>
+        </div>
+    </div>
+    <!--Script-->
+    <script src="Scripts/vue.js"></script>
+    <script src="public/script.js"></script>
+</body>
+
+</html>
