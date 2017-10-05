@@ -32,9 +32,9 @@
         <div class="col-sm-3">
             <h3>Machines</h3>
             
-            <select >
+            <select v-model="machines">
                 <option value="all">All</option>
-                <option v-for="machine in machines" v-bind:value="machine.Name">{{machine.mName}}</option>              
+                <option v-for="machine in uniqueMachines" value>{{machine}}</option>              
             </select>            
         </div>
         <!--Machine's tools-->
@@ -48,12 +48,12 @@
                         <th>Hit Count</th>
                     </tr>
                     <!--Tool table content-->
-                    
+                     <!--
                         <tr v-for="c in content">
                             <td>{{c.tName}}</td>
                             <td>{{c.tCategory}}</td>
                             <td>{{c.hitCount}}</td>
-                        </tr>
+                        </tr>-->
                     
                 </table>
 
@@ -65,6 +65,7 @@
         </div>
     </div>
     <!--Script-->
+    <script src="Scripts/lodash.js"></script>
     <script src="Scripts/vue.js"></script>
     <script src="public/script.js"></script>
 </body>
