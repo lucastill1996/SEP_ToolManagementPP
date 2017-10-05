@@ -109,10 +109,9 @@
         }
         ],
 
-        content: [],
-        machineToggled: false
+        content: []
     },
-    methods: {
+    /*methods: {
         getContent: function (index) {
             var machine = this.machines[index];
             var tool = this.tools
@@ -130,5 +129,6 @@
             this.content = mule;
             mule = [];
         }
-    }
+    }*/
+    
 })

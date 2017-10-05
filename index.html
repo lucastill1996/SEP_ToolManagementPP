@@ -31,9 +31,11 @@
         <!--Machines-->
         <div class="col-sm-3">
             <h3>Machines</h3>
-            <div v-for="(machine, index) in machines">
-                <button type="button" class="btn-primary btn-lg mBtn" v-on:click="getContent(index)">{{machine.mName}}</button>
-            </div>
+            
+            <select >
+                <option value="all">All</option>
+                <option v-for="machine in machines" v-bind:value="machine.Name">{{machine.mName}}</option>              
+            </select>            
         </div>
         <!--Machine's tools-->
         <div class="col-sm-5">
@@ -46,13 +48,13 @@
                         <th>Hit Count</th>
                     </tr>
                     <!--Tool table content-->
-                    <div>
+                    
                         <tr v-for="c in content">
                             <td>{{c.tName}}</td>
                             <td>{{c.tCategory}}</td>
                             <td>{{c.hitCount}}</td>
                         </tr>
-                    </div>
+                    
                 </table>
 
             </div>
