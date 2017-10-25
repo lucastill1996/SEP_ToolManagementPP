@@ -105,7 +105,7 @@ new Vue({
 		
 		
 		filtered: function() {
-			var tool_array = this.filteredPeople,
+			var tool_array = this.filteredTool,
                 searchString = this.searchString;
 
             if(!searchString){
@@ -128,7 +128,7 @@ new Vue({
 		
 		
 		
-		filteredPeople: function() {
+		filteredTool: function() {
 			var vm = this;
 			var tInMachineName = vm.SelectMachine;
 
@@ -137,9 +137,9 @@ new Vue({
 		
 				return vm.tools;
 			} else {
-				return vm.tools.filter(function(person) {
+				return vm.tools.filter(function(tool) {
 					
-					return  ( person.tInMachineName == tInMachineName) ;	 
+					return  ( tool.tInMachineName == tInMachineName) ;	 
 
 				});
 			}
