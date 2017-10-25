@@ -43,7 +43,7 @@
 	
             <select v-model="SelectMachine">
                 <option value="all" checked>All</option>
-				<option v-for="person in uniqueMachines" >{{person}}</option>  
+				<option v-for="machine in uniqueMachines" >{{machine}}</option>  
 				
             </select>   
 
@@ -63,11 +63,11 @@
                     </tr>
                     <!--Tool table content-->
                    
-                        <tr v-for="person in filtered">
+                        <tr v-for="tool in filtered">
 					
-                            <td>{{person.tName}}</td>
-                            <td>{{person.tCategory}}</td>
-                            <td>{{person.hitCount}}</td>
+                            <td>{{tool.tName}}</td>
+                            <td>{{tool.tCategory}}</td>
+                            <td>{{tool.hitCount}}</td>
 						
                         </tr>
                     
