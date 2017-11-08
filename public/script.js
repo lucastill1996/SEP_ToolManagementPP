@@ -6,87 +6,28 @@ new Vue({
         searchString: '',
 		
         SelectMachine: 'all',
-        tools: [{
-            tId: 1,
-            tName: 'Danh ngao',
-            tCategory: 'Category 1',
-            tInMachineName: 'Machine 1',
-            hitCount: 100
-        },
-        {
-            tId: 2,
-            tName: 'Ngao Danh',
-            tCategory: 'Category 1',
-            tInMachineName: 'Machine 2',
-            hitCount: 102
-        },
-        {
-            tId: 3,
-            tName: 'Thien dep trai',
-            tCategory: 'Category 2',
-            tInMachineName: 'Machine 3',
-            hitCount: 103
-        },
-        {
-            tId: 4,
-            tName: 'Peter',
-            tCategory: 'Category 2',
-            tInMachineName: 'Machine 1',
-            hitCount: 104
-        },
-        {
-            tId: 5,
-            tName: 'Tool 5',
-            tCategory: 'Category 2',
-            tInMachineName: 'Machine 2',
-            hitCount: 105
-        },
-        {
-            tId: 6,
-            tName: 'Tool 6',
-            tCategory: 'Category 1',
-            tInMachineName: 'Machine 3',
-            hitCount: 106
-        },
-        {
-            tId: 7,
-            tName: 'Tool 7',
-            tCategory: 'Category 1',
-            tInMachineName: 'Machine 1',
-            hitCount: 107
-        },
-        {
-            tId: 8,
-            tName: 'Tool 8',
-            tCategory: 'Category 3',
-            tInMachineName: 'Machine 3',
-            hitCount: 108
-        },
-        {
-            tId: 9,
-            tName: 'Tool 9',
-            tCategory: 'Category 2',
-            tInMachineName: 'Machine 2',
-            hitCount: 109
-        },
-        {
-            tId: 10,
-            tName: 'Tool 10',
-            tCategory: 'Category 3',
-            tInMachineName: 'Machine 4',
-            hitCount: 110
-        },
-        {
-            tId: 11,
-            tName: 'Tool 11',
-            tCategory: 'Category 3',
-            tInMachineName: 'Machine 2',
-            hitCount: 200
-        }
-        ],
+        tools: [ ],
 		
     },
-  
+	//calling the method which load the json file at the loading of he page
+	created: function () {
+        this.fetchData();
+    },
+	//calling the json
+    methods: {
+        fetchData: function () {
+            var jsonURL = "http://www.cc.puv.fi/~e1400459/SEP_ToolManagementPP-master/public/file.json";
+            var self=this;
+            axios.get(jsonURL)
+            .then(function (response) {
+                self.tools=response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
+    },	
+	
 	 computed: {
          
 		uniqueMachines: function () {
@@ -105,7 +46,7 @@ new Vue({
 		
 		
 		filtered: function() {
-			var tool_array = this.filteredTool,
+			var tool_array = this.filteredPeople,
                 searchString = this.searchString;
 
             if(!searchString){
@@ -128,7 +69,7 @@ new Vue({
 		
 		
 		
-		filteredTool: function() {
+		filteredPeople: function() {
 			var vm = this;
 			var tInMachineName = vm.SelectMachine;
 
@@ -137,9 +78,9 @@ new Vue({
 		
 				return vm.tools;
 			} else {
-				return vm.tools.filter(function(tool) {
+				return vm.tools.filter(function(person) {
 					
-					return  ( tool.tInMachineName == tInMachineName) ;	 
+					return  ( person.tInMachineName == tInMachineName) ;	 
 
 				});
 			}
