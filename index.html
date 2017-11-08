@@ -43,7 +43,7 @@
 	
             <select v-model="SelectMachine">
                 <option value="all" checked>All</option>
-				<option v-for="machine in uniqueMachines" >{{machine}}</option>  
+				<option v-for="person in uniqueMachines" >{{person}}</option>  
 				
             </select>   
 
@@ -63,11 +63,11 @@
                     </tr>
                     <!--Tool table content-->
                    
-                        <tr v-for="tool in filtered">
+                        <tr v-for="person in filtered">
 					
-                            <td>{{tool.tName}}</td>
-                            <td>{{tool.tCategory}}</td>
-                            <td>{{tool.hitCount}}</td>
+                            <td>{{person.tName}}</td>
+                            <td>{{person.tCategory}}</td>
+                            <td>{{person.hitCount}}</td>
 						
                         </tr>
                     
@@ -85,6 +85,7 @@
 
     <script src="Scripts/lodash.js"></script>
     <script src="Scripts/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="public/script.js"></script>
 </body>
 
