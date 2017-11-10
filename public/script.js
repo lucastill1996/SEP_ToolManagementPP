@@ -16,7 +16,7 @@ new Vue({
 	//calling the json
     methods: {
         fetchData: function () {
-            var jsonURL = "http://www.cc.puv.fi/~e1400459/SEP_ToolManagementPP-master/public/file.json";
+            var jsonURL = "public/data.json";
             var self=this;
             axios.get(jsonURL)
             .then(function (response) {
@@ -78,9 +78,9 @@ new Vue({
 		
 				return vm.tools;
 			} else {
-				return vm.tools.filter(function(person) {
+				return vm.tools.filter(function(tool) {
 					
-					return  ( person.tInMachineName == tInMachineName) ;	 
+					return  ( tool.tInMachineName == tInMachineName) ;	 
 
 				});
 			}
