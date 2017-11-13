@@ -18,42 +18,63 @@
 	
         <div>
             <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">SEProject</a>
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <a class="navbar-brand" href="#">SEProject</a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">Tool Library</a></li>
+                                <li class="active"><a href="#">Machines</a></li>
+                            </ul>
+                        </div>
+
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Tool Library</a></li>
-                        <li class="active"><a href="#">Machines</a></li>                                                
-                    </ul>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" v-model="searchString" />
+                    </div>
+                    <div class="col-sm-4">
+                        <select v-model="SelectMachine">
+                            <option value="all" checked>All</option>
+                            <option v-for="machine in uniqueMachines">{{machine}}</option>
+                        </select>
+                    </div>
                 </div>
-            </nav>  
+            </nav>
         </div>
         <!--Machines-->
-        <div class="col-sm-3">
-            <h3>Machines</h3>
-			
-			
-			
-            <input type="text" class="form-control" v-model="searchString"/>
-    <br/>
-	
-	
-	
-	
-            <select v-model="SelectMachine">
-                <option value="all" checked>All</option>
-				<option v-for="person in uniqueMachines" >{{person}}</option>  
-				
-            </select>   
+        <div class="col-sm-4">
+           <input class="searchbox" placeholder="Search tools" type="text" v-model="searchString"></input></br>
+            <div>
+			<div  class="row"></br>
+			</div>
+                <table class='table table-hover'>
+                    <tr>
+                        <th>Tool</th>
+                        <th>Tool Category</th>
+                        <th>Hit Count</th>
+                    </tr>
+                    <!--Tool table content-->
 
-
-
+                    <tr v-for="machine in filtered">
+                        <td>{{machine.tName}}</td>
+                        <td>{{machine.tCategory}}</td>
+                        <td>{{machine.hitCount}}</td>
+                    </tr>
+                </table>
+            </div>
 			
         </div>
         <!--Machine's tools-->
-        <div class="col-sm-5">
-            <h3>Machine's tools</h3>
+        <div class="col-sm-4">
+           <input class="searchbox" placeholder="Search toolInfo" type="text" v-model="searchString"></input></br>
+		   <div  class="row"></br>
+				<div class="col-sm-4"><button id="bt1" type="button">Detail</button></div>
+				<div class="col-sm-4"><button id="bt2" type="button">Component</button></div>
+				<div class="col-sm-4"><button id="bt3" type="button">Other</button></div>
+			</div>
             <div>
                 <table class='table table-hover'>
                     <tr>
@@ -63,22 +84,45 @@
                     </tr>
                     <!--Tool table content-->
                    
-                        <tr v-for="person in filtered">
-					
-                            <td>{{person.tName}}</td>
-                            <td>{{person.tCategory}}</td>
-                            <td>{{person.hitCount}}</td>
-						
-                        </tr>
-                    
+                        <tr v-for="machine in filtered">					
+                            <td>{{machine.tName}}</td>
+                            <td>{{machine.tCategory}}</td>
+                            <td>{{machine.hitCount}}</td>						
+                        </tr>                    
                 </table>
-
             </div>
         </div>
+		
+		
         <!--Tool details-->
-        <div class="col-sm-4">
-            <h3>Tool details</h3>
-        </div>
+        <div class="col-sm-4">		
+            <h3 style="display:inline">Details</h3>
+			
+			<div  class="row"></br>
+				<div class="col-sm-5"><button id="bt" type="button">Edit</button></div>
+			</div>
+			
+			<div  class="row"></br>
+				<div class="col-sm-2"><label>ID</label></div>
+				<div class="col-sm-10"><input type="text" id="namebox" value="Toolname 1"></div>
+			</div>
+			
+			<div  class="row"></br>
+				<div class="col-sm-2"><label>Type</label></div>
+				<div class="col-sm-5"><input type="text" id="namebox" value="Punching | Forming | Wheel"></div>
+				<div class="col-sm-5"><input type="text" id="namebox" value="Square | Round | Rectangle"></div>
+			</div>
+			
+			<div  class="row"></br>
+				<div class="col-sm-2"><label>Heatcount</label></div>
+				<div class="col-sm-10"><input type="text" id="namebox" value="A | B | C | D | E"></div>
+			</div>
+			
+			<div  class="row"></br>
+				<div class="col-sm-2"><label>Notes</label></div>
+				<div class="col-sm-10"><input type="text" id="notebox" value=""></div>
+			</div>
+		</div>
     </div>
     <!--Script-->
 
