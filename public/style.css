@@ -1,4 +1,52 @@
 .mBtn {
-    background-color: #262626;
-    color: white;
+    background-color: #000000;
+    color: red;
 }
+.navbar {
+    border-radius: 0;
+	background-color: #1f1f1f;
+	color:blue;
+}
+
+#bt1{
+	width:80%;
+	height:40px;
+	float: left;
+	border-radius:0;
+}
+#bt{
+	width:80%;
+	height:40px;
+	float: left;
+	border-radius:0;
+}
+
+#bt2{
+	width:95%;
+	height:40px;
+border-radius:0;
+
+}
+#bt3{
+		width:95%;
+	height:40px;
+	float: left;
+	border-radius:0;
+}
+
+
+input.searchbox{
+width:200px;
+border-radius:0;
+float: left;
+}
+#namebox{
+
+   width:95%
+}
+#notebox{
+	height:250px;
+   width:95%;
+}
+
+
