@@ -1,0 +1,1 @@
+[{"Id":1,"Name":"Test Machine 1","Serial":"MA123","ToolIds":[1]},{"Id":2,"Name":"Test Machine 2","Serial":"MA666","ToolIds":[]},{"Id":3,"Name":"Test Machine 3","Serial":"MA921","ToolIds":[2,4]}]

@@ -1,0 +1,84 @@
+[
+  {
+    "Parts": [
+      {
+        "Attributes": [
+          {
+            "Key": "Clearance",
+            "Value": "0.2"
+          },
+          {
+            "Key": "Height",
+            "Value": "15.0"
+          },
+          {
+            "Key": "Color",
+            "Value": "Yellow"
+          },
+          {
+            "Key": "Installed",
+            "Value": "True"
+          }
+        ],
+        "Type": "Die",
+        "Hitcount": 1948,
+        "Identifier": "D123"
+      }
+    ],
+    "Type": {
+      "Name": "MarkingTool"
+    },
+    "Name": "Punching Tool",
+    "Shape": "RND",
+    "Size": "D",
+    "Diameter": 5,
+    "Xdimension": 0,
+    "Ydimension": 0
+  },
+  {
+    "Parts": [
+      {
+        "Attributes": [
+          {
+            "Key": null,
+            "Value": null
+          },
+          {
+            "Key": null,
+            "Value": null
+          }
+        ],
+        "Type": "Punch",
+        "Hitcount": 284,
+        "Identifier": "P123"
+      },
+      {
+        "Attributes": [],
+        "Type": "Stripper",
+        "Hitcount": 666,
+        "Identifier": "S123"
+      }
+    ],
+    "Type": {
+      "Name": "FormingTool"
+    },
+    "Name": "Marking Tool",
+    "Shape": "SPEC",
+    "Size": "D",
+    "Diameter": 0,
+    "Xdimension": 4.5,
+    "Ydimension": 5
+  },
+  {
+    "Parts": [],
+    "Type": {
+      "Name": "WheelTool"
+    },
+    "Name": "Wheel Tool",
+    "Shape": "SPEC",
+    "Size": "B",
+    "Diameter": 3.32,
+    "Xdimension": 0,
+    "Ydimension": 0
+  }
+]
