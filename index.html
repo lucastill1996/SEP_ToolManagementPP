@@ -53,19 +53,24 @@
                 </div>
                 <table class='table table-hover'>
                     <tr>
-                        <th>Tool</th>
-                        <th>Tool Category</th>
-                        <th>Hit Count</th>
-                        <th>test</th>
+                        <th>Tool Name</th>
+                        <th>Shape</th>
+                        <th>Size</th>
+                        <th>Diameter</th>
                     </tr>
                     <!--Tool table content-->
 
-                    <tr v-for="machine in filtered">
+                    <!--<tr v-for="machine in filtered">
                         <td>{{machine.tName}}</td>
                         <td>{{machine.tCategory}}</td>
                         <td>{{machine.hitCount}}</td>
                         <td>{{machine.tInMachineName}}</td>
-                    </tr>
+                    </tr>-->
+                    <tr v-for="tool in tools_filtered_by_searchAndBox">
+                        <td>{{tool.Name}}</td>
+                        <td>{{tool.Shape}}</td>
+                        <td>{{tool.Size}}</td>
+                        <td>{{tool.Diameter}}</td>
                 </table>
             </div>
 
