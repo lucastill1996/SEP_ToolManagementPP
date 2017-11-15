@@ -9,6 +9,7 @@ new Vue({
         tools: [], //tools contain the retrieved information from data.json
         machineJSON: [],
         toolsJSON: [],
+        rawFilter:[],
         final_result_array:[],
         listofSelectedMachines: []
     },
@@ -19,9 +20,9 @@ new Vue({
 	//calling the json
     methods: {
         fetchData: function () {
-            var jsonURL0 = "public/data.json";
-            var jsonURL1= "public/newmachine.json";
-            var jsonURL2 = "public/tools.json";
+            var jsonURL0 = "public/data.json"; //outdated json, to be remove once the later two are implemented
+            var jsonURL1= "public/newmachine.json"; //consist of machine information, and the list of ID of tools in those machines
+            var jsonURL2 = "public/tools.json";//consist of tool information
             var self = this;
             //json0
             axios.get(jsonURL0)
@@ -50,9 +51,9 @@ new Vue({
         }
     },	
 	
-	 computed: {
-         
-		uniqueMachines: function () {
+    computed: {
+
+		/*uniqueMachines: function () {
             var self = this;
             var mules = [];
             var result = [];           
@@ -64,9 +65,21 @@ new Vue({
             mules = _.sortBy(mules,'mName')
             result = _.uniq(_.map(mules, 'mName')); 
             return result;
+        },*/
+        uniqueMachines: function () {
+            var self = this;
+            var mules = [];
+            var result = [];
+            for (var i = 0; i < self.machineJSON.length; i++) {
+                mules.push({
+                    mName: self.machineJSON[i].Name
+                });
+            }
+            mules = _.sortBy(mules, 'mName')
+            result = _.uniq(_.map(mules, 'mName'));
+            return result;
         },
-		
-		
+
         filtered: function () {
             //rawResult_array recieve objects from filteredMachine, 
             //and will get filtered again into the global final_result_array
@@ -87,7 +100,7 @@ new Vue({
                     for (var i = 0, u = rawResult_array.length; i < u; i++) {
                         this.final_result_array.push(rawResult_array[i]);
                     }
-                }               
+                }
             }
             //if all is selected
             else if (selectedTInMachineName == "all") {
@@ -97,25 +110,23 @@ new Vue({
                 //push into result everything.
                 this.final_result_array = self.tools;
             }
-                           
-            if(!searchString){
+
+            if (!searchString) {
                 return this.final_result_array;
             }
 
             searchString = searchString.trim().toLowerCase();
 
-            rawResult_array = rawResult_array.filter(function(item){
-                if(item.tName.toLowerCase().indexOf(searchString) !== -1){
+            rawResult_array = rawResult_array.filter(function (item) {
+                if (item.tName.toLowerCase().indexOf(searchString) !== -1) {
                     return item;
                 }
             })
-
-
             return rawResult_array;
-		},
-		
-		//Returning object of tools that have machine id required		
-		filteredMachine: function() {
+        },
+
+        //Returning object of tools that have machine id required		
+		/*filteredMachine: function() {
 			var vm = this;
 			var selectedTInMachineName = vm.SelectMachine;
 
@@ -129,7 +140,35 @@ new Vue({
                     }
                 );
 			}
-		}
+		}*/
+        filteredMachine: function () {
+            var vm = this;
+            var selectedTInMachineName = vm.SelectMachine;
+
+            if (selectedTInMachineName == "all") {
+                return vm.toolsJSON;
+            }
+            else {
+                this.rawFilter = [];
+                for (var i = 0, u = this.machineJSON.length; i < u; i++){
+                    //find the selected machine
+                    if (vm.machineJSON[i].Name == selectedTInMachineName) {                        
+                        //when found, loops through tools and see if the machine contain this tool
+                        for (var x = 0, y = vm.toolsJSON.length; x < y; x++){
+                            //vm.rawFilter.push(vm.toolsJSON[0]);
+                            //if found, push this tool to rawFilter
+                            console.log(vm.machineJSON[i].Name);
+                            //vm.machine is still visible here
+                            //the if statement below will not see the vm.machine. NEED FIXING!
+                            //if (vm.machineJSON[x].ToolIds.indexOf(vm.toolsJSON[x].toolID) > -1) {
+                                //vm.rawFilter.push(vm.toolsJSON[x]);
+                            //}
+                        }
+                    }
+                }
+                return this.rawFilter;
+            }
+        }
     }
     
     

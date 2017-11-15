@@ -1,79 +1,79 @@
 ﻿[
-  {
-    "tId": "1",
-    "tName": "Tool 1",
-    "tCategory": "Category 1",
-    "tInMachineName": "Machine 1",
-    "hitCount": "100"
-  },
-  {
-    "tId": "2",
-    "tName": "Tool 2",
-    "tCategory": "Category 1",
-    "tInMachineName": "Machine 2",
-    "hitCount": "102"
-  },
-  {
-    "tId": "3",
-    "tName": "tool 3",
-    "tCategory": "Category 2",
-    "tInMachineName": "Machine 3",
-    "hitCount": "103"
-  },
-  {
-    "tId": "4",
-    "tName": "Tool 4",
-    "tCategory": "Category 2",
-    "tInMachineName": "Machine 1",
-    "hitCount": "104"
-  },
-  {
-    "tId": "5",
-    "tName": "Tool 5",
-    "tCategory": "Category 2",
-    "tInMachineName": "Machine 2",
-    "hitCount": "105"
-  },
-  {
-    "tId": "6",
-    "tName": "Tool 6",
-    "tCategory": "Category 1",
-    "tInMachineName": "Machine 3",
-    "hitCount": "106"
-  },
-  {
-    "tId": "7",
-    "tName": "Tool 7",
-    "tCategory": "Category 1",
-    "tInMachineName": "Machine 1",
-    "hitCount": "107"
-  },
-  {
-    "tId": "8",
-    "tName": "Tool 8",
-    "tCategory": "Category 3",
-    "tInMachineName": "Machine 3",
-    "hitCount": "108"
-  },
-  {
-    "tId": "9",
-    "tName": "Tool 9",
-    "tCategory": "Category 2",
-    "tInMachineName": "Machine 2",
-    "hitCount": "109"
-  },
-  {
-    "tId": "10",
-    "tName": "Tool 10",
-    "tCategory": "Category 3",
-    "tInMachineName": "Machine 4",
-    "hitCount": "110"
-  },
-  {
-    "tId": "11",
-    "tName": "Tool 11",
-    "tCategory": "Category 3",
-    "tInMachineName": "Machine 2",
-    "hitCount": "200"
-  }
+   {
+      "tId":"1",
+      "tName":"Tool 1",
+      "tCategory":"Category 1",
+      "tInMachineName":"Machine 1",
+      "hitCount":"100"
+   },
+   {
+      "tId":"2",
+      "tName":"Tool 2",
+      "tCategory":"Category 1",
+      "tInMachineName":"Machine 2",
+      "hitCount":"102"
+   },
+   {
+      "tId":"3",
+      "tName":"tool 3",
+      "tCategory":"Category 2",
+      "tInMachineName":"Machine 3",
+      "hitCount":"103"
+   },
+   {
+      "tId":"4",
+      "tName":"Tool 4",
+      "tCategory":"Category 2",
+      "tInMachineName":"Machine 1",
+      "hitCount":"104"
+   },
+   {
+      "tId":"5",
+      "tName":"Tool 5",
+      "tCategory":"Category 2",
+      "tInMachineName":"Machine 2",
+      "hitCount":"105"
+   },
+   {
+      "tId":"6",
+      "tName":"Tool 6",
+      "tCategory":"Category 1",
+      "tInMachineName":"Machine 3",
+      "hitCount":"106"
+   },
+   {
+      "tId":"7",
+      "tName":"Tool 7",
+      "tCategory":"Category 1",
+      "tInMachineName":"Machine 1",
+      "hitCount":"107"
+   },
+   {
+      "tId":"8",
+      "tName":"Tool 8",
+      "tCategory":"Category 3",
+      "tInMachineName":"Machine 3",
+      "hitCount":"108"
+   },
+   {
+      "tId":"9",
+      "tName":"Tool 9",
+      "tCategory":"Category 2",
+      "tInMachineName":"Machine 2",
+      "hitCount":"109"
+   },
+   {
+      "tId":"10",
+      "tName":"Tool 10",
+      "tCategory":"Category 3",
+      "tInMachineName":"Machine 4",
+      "hitCount":"110"
+   },
+   {
+      "tId":"11",
+      "tName":"Tool 11",
+      "tCategory":"Category 3",
+      "tInMachineName":"Machine 2",
+      "hitCount":"200"
+   }
 ]
