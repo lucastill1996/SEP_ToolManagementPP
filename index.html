@@ -20,7 +20,6 @@
             <nav class="navbar navbar-inverse">
                 <div class="row">
                     <div class="col-sm-4">
-
                         <div class="container-fluid">
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">SEProject</a>
@@ -29,16 +28,13 @@
                                 <li class="active"><a href="#">Main App</a></li>
                             </ul>
                         </div>
-
-                    </div>
-                  
+                    </div>                 
                 </div>
             </nav>
         </div>
         <!--Tool table-->
         <div class="row">
-            <div class="col-sm-4">
-              
+            <div class="col-sm-4">            
                 <div>
                     <!--This table tag is still needed to generated array for the table, but should be remove when the script is edited-->
                     <table class='table table-hover'>
@@ -49,11 +45,9 @@
                         </tr>
                     </table>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <button @click="toggleFilter" class="btn btn-default">Toggle Filter</button>
-                        <button @click="togglePicker" class="btn btn-default">Toggle Column Picker</button>
-                        <button @click="togglePagination" class="btn btn-default">Toggle Pagination</button>
+                <div>
+                    <h3>Tools</h3>
+                    <div class="col-sm-12">             
                         <select v-model="SelectMachine">
                             <option value="all" checked>All</option>
                             <option v-for="machine in uniqueMachines">{{machine}}</option>
@@ -81,16 +75,13 @@
 
                 <div id="Details" class="tabcontent">
                     <h3>Details</h3>
-                    <p>No idea what to fill here</p>
+                    <p>Empty</p>
                 </div>
 
                 <div id="Components" class="tabcontent">
                     <h3>Components</h3>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button @click="toggleFilter" class="btn btn-default">Toggle Filter</button>
-                            <button @click="togglePicker" class="btn btn-default">Toggle Column Picker</button>
-                            <button @click="togglePagination" class="btn btn-default">Toggle Pagination</button>
                             <select v-model="SelectMachine">
                                 <option value="all" checked>All</option>
                                 <option v-for="machine in uniqueMachines">{{machine}}</option>
@@ -110,7 +101,7 @@
 
                 <div id="Other" class="tabcontent">
                     <h3>Other</h3>
-                    <p>No idea what to fill here</p>
+                    <p>Empty</p>
                 </div>
             </div>
             <!--Tool details-->
