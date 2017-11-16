@@ -1,0 +1,60 @@
+[
+  {
+    "Identifier": "D123",
+    "Type": "Die",
+    "Hitcount": 1948,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2",
+        "Part": {
+          "Identifier": "D123",
+          "Type": "Die",
+          "Hitcount": 1948
+        }
+      },
+      {
+        "Key": "Height",
+        "Value": "15.0",
+        "Part": {
+          "Identifier": "D123",
+          "Type": "Die",
+          "Hitcount": 1948
+        }
+      },
+      {
+        "Key": "Color",
+        "Value": "Yellow",
+        "Part": {
+          "Identifier": "D123",
+          "Type": "Die",
+          "Hitcount": 1948
+        }
+      },
+      {
+        "Key": "Installed",
+        "Value": "True",
+        "Part": {
+          "Identifier": "D123",
+          "Type": "Die",
+          "Hitcount": 1948
+        }
+      }
+    ],
+    "ToolId": "1"
+  },
+  {
+    "Identifier": "P123",
+    "Type": "Punch",
+    "Hitcount": 284,
+    "Attributes": [],
+    "ToolId": 2
+  },
+  {
+    "Identifier": "SU123",
+    "Type": "Stripper",
+    "Hitcount": 12317,
+    "Attributes": [],
+    "ToolId": 0
+  }
+]

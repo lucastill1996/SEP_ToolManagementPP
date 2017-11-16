@@ -25,122 +25,139 @@
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">SEProject</a>
                             </div>
-                            <ul class="nav navbar-nav">
-                                <li><a href="#">Tool Library</a></li>
-                                <li class="active"><a href="#">Machines</a></li>
+                            <ul class="nav navbar-nav">                             
+                                <li class="active"><a href="#">Main App</a></li>
                             </ul>
                         </div>
 
                     </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" v-model="searchString" />
-                    </div>
-                    <div class="col-sm-4">
+                  
+                </div>
+            </nav>
+        </div>
+        <!--Tool table-->
+        <div class="row">
+            <div class="col-sm-4">
+              
+                <div>
+                    <!--This table tag is still needed to generated array for the table, but should be remove when the script is edited-->
+                    <table class='table table-hover'>
+                        
+                        <!--Tool table content-->
+                        <tr v-for="tool in tools_filtered_by_searchAndBox">
+                            
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button @click="toggleFilter" class="btn btn-default">Toggle Filter</button>
+                        <button @click="togglePicker" class="btn btn-default">Toggle Column Picker</button>
+                        <button @click="togglePagination" class="btn btn-default">Toggle Pagination</button>
                         <select v-model="SelectMachine">
                             <option value="all" checked>All</option>
                             <option v-for="machine in uniqueMachines">{{machine}}</option>
                         </select>
                     </div>
+                    <br /><br />
+                    <vue-bootstrap-table :columns="toolColumns"
+                                         :values="toolValues"
+                                         :show-filter="showFilter"
+                                         :show-column-picker="showPicker"
+                                         :paginated="paginated"
+                                         :multi-column-sortable="multiColumnSortable"
+                                         :filter-case-sensitive="filterCaseSensitive">
+                    </vue-bootstrap-table>
                 </div>
-            </nav>
-        </div>
-        <!--Machines-->
-        <div class="col-sm-4">
-            <input class="searchbox" placeholder="Search tools" type="text" v-model="searchString"></input></br>
-            <div>
+            </div>
+            <!--Middle screen-->
+            <div class="col-sm-4">
+
+                <div class="tab">
+                    <button class="tablinks" onclick="openTab(event, 'Details')">Details</button>
+                    <button class="tablinks" onclick="openTab(event, 'Components')">Components</button>
+                    <button class="tablinks" onclick="openTab(event, 'Other')">Other</button>
+                </div>
+
+                <div id="Details" class="tabcontent">
+                    <h3>Details</h3>
+                    <p>No idea what to fill here</p>
+                </div>
+
+                <div id="Components" class="tabcontent">
+                    <h3>Components</h3>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button @click="toggleFilter" class="btn btn-default">Toggle Filter</button>
+                            <button @click="togglePicker" class="btn btn-default">Toggle Column Picker</button>
+                            <button @click="togglePagination" class="btn btn-default">Toggle Pagination</button>
+                            <select v-model="SelectMachine">
+                                <option value="all" checked>All</option>
+                                <option v-for="machine in uniqueMachines">{{machine}}</option>
+                            </select>
+                        </div>
+                        <br /><br />
+                        <vue-bootstrap-table :columns="partColumns"
+                                             :values="partValues"
+                                             :show-filter="showFilter"
+                                             :show-column-picker="showPicker"
+                                             :paginated="paginated"
+                                             :multi-column-sortable="multiColumnSortable"
+                                              :filter-case-sensitive="filterCaseSensitive">
+                        </vue-bootstrap-table>
+                    </div>
+                </div>
+
+                <div id="Other" class="tabcontent">
+                    <h3>Other</h3>
+                    <p>No idea what to fill here</p>
+                </div>
+            </div>
+            <!--Tool details-->
+            <div class="col-sm-4">
+                <h3 style="display:inline">Details</h3>
+
                 <div class="row">
-                    </br>
+                    <br />
+                    <div class="col-sm-5"><button id="bt" type="button">Edit</button></div>
                 </div>
-                <table class='table table-hover'>
-                    <tr>
-                        <th>Tool Name</th>
-                        <th>Shape</th>
-                        <th>Size</th>
-                        <th>Diameter</th>
-                    </tr>
-                    <!--Tool table content-->
 
-                    <!--<tr v-for="machine in filtered">
-                        <td>{{machine.tName}}</td>
-                        <td>{{machine.tCategory}}</td>
-                        <td>{{machine.hitCount}}</td>
-                        <td>{{machine.tInMachineName}}</td>
-                    </tr>-->
-                    <tr v-for="tool in tools_filtered_by_searchAndBox">
-                        <td>{{tool.Name}}</td>
-                        <td>{{tool.Shape}}</td>
-                        <td>{{tool.Size}}</td>
-                        <td>{{tool.Diameter}}</td>
-                </table>
-            </div>
+                <div class="row">
+                    <br />
+                    <div class="col-sm-2"><label>ID</label></div>
+                    <div class="col-sm-10"><input type="text" id="namebox" value="Toolname 1"></div>
+                </div>
 
-        </div>
-        <!--Machine's tools-->
-        <div class="col-sm-4">
-            <input class="searchbox" placeholder="Search toolInfo" type="text" v-model="searchString"></input></br>
-            <div class="row">
-                </br>
-                <div class="col-sm-4"><button id="bt1" type="button">Detail</button></div>
-                <div class="col-sm-4"><button id="bt2" type="button">Component</button></div>
-                <div class="col-sm-4"><button id="bt3" type="button">Other</button></div>
-            </div>
-            <div>
-                <table class='table table-hover'>
-                    <tr>
-                        <th>Tool</th>
-                        <th>Tool Category</th>
-                        <th>Hit Count</th>
-                    </tr>
-                    <!--Tool table content-->
+                <div class="row">
+                    <br />
+                    <div class="col-sm-2"><label>Type</label></div>
+                    <div class="col-sm-5"><input type="text" id="namebox" value="Punching | Forming | Wheel"></div>
+                    <div class="col-sm-5"><input type="text" id="namebox" value="Square | Round | Rectangle"></div>
+                </div>
 
-                    
-                </table>
-            </div>
-        </div>
+                <div class="row">
+                    <br />
+                    <div class="col-sm-2"><label>Heatcount</label></div>
+                    <div class="col-sm-10"><input type="text" id="namebox" value="A | B | C | D | E"></div>
+                </div>
 
-
-        <!--Tool details-->
-        <div class="col-sm-4">
-            <h3 style="display:inline">Details</h3>
-
-            <div class="row">
-                </br>
-                <div class="col-sm-5"><button id="bt" type="button">Edit</button></div>
-            </div>
-
-            <div class="row">
-                </br>
-                <div class="col-sm-2"><label>ID</label></div>
-                <div class="col-sm-10"><input type="text" id="namebox" value="Toolname 1"></div>
-            </div>
-
-            <div class="row">
-                </br>
-                <div class="col-sm-2"><label>Type</label></div>
-                <div class="col-sm-5"><input type="text" id="namebox" value="Punching | Forming | Wheel"></div>
-                <div class="col-sm-5"><input type="text" id="namebox" value="Square | Round | Rectangle"></div>
-            </div>
-
-            <div class="row">
-                </br>
-                <div class="col-sm-2"><label>Heatcount</label></div>
-                <div class="col-sm-10"><input type="text" id="namebox" value="A | B | C | D | E"></div>
-            </div>
-
-            <div class="row">
-                </br>
-                <div class="col-sm-2"><label>Notes</label></div>
-                <div class="col-sm-10"><input type="text" id="notebox" value=""></div>
+                <div class="row">
+                    <br />
+                    <div class="col-sm-2"><label>Notes</label></div>
+                    <div class="col-sm-10"><input type="text" id="notebox" value=""></div>
+                </div>
             </div>
         </div>
     </div>
+
+
     <!--Script-->
-
-
     <script src="Scripts/lodash.js"></script>
     <script src="Scripts/vue.js"></script>
+    <script src="Scripts/vue-bootstrap-table.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="public/script.js"></script>
+    <script src="public/scriptForTabs.js"></script>
+    <script src="public/vue_Script.js"></script>
 </body>
 
 </html>

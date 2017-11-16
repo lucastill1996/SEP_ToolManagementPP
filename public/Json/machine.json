@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "Name": "Test Machine 1",
+    "Serial": "MA123",
+    "ToolIds": [
+      "1"
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Test Machine 2",
+    "Serial": "MA666",
+    "ToolIds": [
+      "7","8"
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Test Machine 3",
+    "Serial": "MA921",
+    "ToolIds": [
+      "2",
+      "4"
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Test Machine 4",
+    "Serial": "MA923",
+    "ToolIds": [
+      "3"
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Test Machine 5",
+    "Serial": "MA521",
+    "ToolIds": [
+      "5",
+      "6"
+    ]
+  }
+]

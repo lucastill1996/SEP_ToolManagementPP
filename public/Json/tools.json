@@ -1,74 +1,93 @@
 [
   {
     "toolID": "1",
-    "Type": {
-      "Name": "MarkingTool"
-    },
     "Name": "Punching Tool",
     "Shape": "RND",
     "Size": "D",
-    "Diameter": 5,
-    "Xdimension": 0,
-    "Ydimension": 0
+    "Diameter": 5.0,
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 1,
+    "MachineSerial": "MA123",
+    "Type": "MarkingTool",
+    "PartIds": [ "D123" ]
   },
   {
     "toolID": "2",
-    "Type": {
-      "Name": "FormingTool"
-    },
     "Name": "Marking Tool",
     "Shape": "SPEC",
     "Size": "D",
-    "Diameter": 0,
+    "Diameter": 0.0,
     "Xdimension": 4.5,
-    "Ydimension": 5
+    "Ydimension": 5.0,
+    "StationNumber": 2,
+    "MachineSerial": "MA921",
+    "Type": "FormingTool",
+    "PartIds": [ "P123" ]
   },
   {
     "toolID": "3",
-    "Type": {
-      "Name": "WheelTool"
-    },
-    "Name": "Wheel Tool",
-    "Shape": "SPEC",
-    "Size": "B",
-    "Diameter": 3.32,
-    "Xdimension": 0,
-    "Ydimension": 0
-  },
-  {
-    "toolID": "4",
-    "Type": {
-      "Name": "WheelTool 2"
-    },
-    "Name": "Wheel Tool 2",
-    "Shape": "SPEC",
-    "Size": "B",
-    "Diameter": 3.32,
-    "Xdimension": 0,
-    "Ydimension": 0
+    "Name": "Unmapped Tool",
+    "Shape": "RND",
+    "Size": "D",
+    "Diameter": 7.0,
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 0,
+    "MachineSerial": null,
+    "Type": "WheelTool",
+    "PartIds": []
   },
   {
     "toolID": "5",
-    "Type": {
-      "Name": "WheelTool2"
-    },
-    "Name": "Wheel Tool 7",
+    "Name": "Run Tool",
     "Shape": "SPEC",
     "Size": "B",
     "Diameter": 3.32,
-    "Xdimension": 0,
-    "Ydimension": 0
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 2,
+    "MachineSerial": "MA921",
+    "Type": "WheelTool",
+    "PartIds": []
   },
   {
     "toolID": "6",
-    "Type": {
-      "Name": "WheelTool"
-    },
-    "Name": "Wheel Tool 3",
+    "Name": "Walk Tool",
     "Shape": "SPEC",
     "Size": "B",
     "Diameter": 3.32,
-    "Xdimension": 0,
-    "Ydimension": 0
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 2,
+    "MachineSerial": "MA921",
+    "Type": "WheelTool",
+    "PartIds": []
+  },
+  {
+    "toolID": "7",
+    "Name": "Stand Tool",
+    "Shape": "SPEC",
+    "Size": "B",
+    "Diameter": 3.32,
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 2,
+    "MachineSerial": "MA921",
+    "Type": "WheelTool",
+    "PartIds": []
+  },
+  {
+    "toolID": "8",
+    "Name": "Sit Tool",
+    "Shape": "SPEC",
+    "Size": "B",
+    "Diameter": 3.32,
+    "Xdimension": 0.0,
+    "Ydimension": 0.0,
+    "StationNumber": 2,
+    "MachineSerial": "MA921",
+    "Type": "WheelTool",
+    "PartIds": []
   }
 ]
