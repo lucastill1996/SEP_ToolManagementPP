@@ -22,8 +22,8 @@ new Vue({
         //Testing
 
         logging: [],
-        showFilter: false,
-        showPicker: false,
+        showFilter: true,
+        showPicker: true,
         paginated: true,
         multiColumnSortable: true,
         filterCaseSensitive:false,
