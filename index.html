@@ -24,34 +24,33 @@
                             <div class="navbar-header">
                                 <a class="navbar-brand" href="#">SEProject</a>
                             </div>
-                            <ul class="nav navbar-nav">                             
+                            <ul class="nav navbar-nav">
                                 <li class="active"><a href="#">Main App</a></li>
                             </ul>
                         </div>
-                    </div>                 
+                    </div>
                 </div>
             </nav>
         </div>
         <!--Tool table-->
         <div class="row">
-            <div class="col-sm-4">            
+            <div class="col-sm-4">
                 <div>
                     <!--This table tag is still needed to generated array for the table, but should be remove when the script is edited-->
                     <table class='table table-hover'>
-                        
+
                         <!--Tool table content-->
-                        <tr v-for="tool in tools_filtered_by_searchAndBox">
-                            
-                        </tr>
+                        <tr v-for="tool in tools_filtered_by_searchAndBox"></tr>
                     </table>
                 </div>
                 <div>
-                    <h3>Tools</h3>
-                    <div class="col-sm-12">             
-                        <select v-model="SelectMachine">
-                            <option value="all" checked>All</option>
-                            <option v-for="machine in uniqueMachines">{{machine}}</option>
-                        </select>
+
+                    <div class="col-sm-12"  >                      
+                        <label for="toolTable">Select tool from</label>
+                            <select id="toolTable" v-model="SelectMachine">
+                                <option value="all" checked>All</option>
+                                <option v-for="machine in uniqueMachines">{{machine}}</option>
+                            </select>
                     </div>
                     <br /><br />
                     <vue-bootstrap-table :columns="toolColumns"
@@ -82,10 +81,12 @@
                     <h3>Components</h3>
                     <div class="row">
                         <div class="col-sm-12">
-                            <select v-model="SelectMachine">
-                                <option value="all" checked>All</option>
-                                <option v-for="machine in uniqueMachines">{{machine}}</option>
-                            </select>
+                            <label for="toolTable">Select part from</label>
+                                <select v-model="SelectMachine">
+                                    <option value="all" checked>All</option>
+                                    <option v-for="machine in uniqueMachines">{{machine}}</option>
+                                </select>
+                           
                         </div>
                         <br /><br />
                         <vue-bootstrap-table :columns="partColumns"
@@ -94,7 +95,7 @@
                                              :show-column-picker="showPicker"
                                              :paginated="paginated"
                                              :multi-column-sortable="multiColumnSortable"
-                                              :filter-case-sensitive="filterCaseSensitive">
+                                             :filter-case-sensitive="filterCaseSensitive">
                         </vue-bootstrap-table>
                     </div>
                 </div>
