@@ -69,7 +69,7 @@
             <div class="col-sm-6">
 
                 <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'Details')">Details</button>
+                    <button class="tablinks" onclick="openTab(event, 'Details')" id="defaultOpen">Details</button>
                     <button class="tablinks" onclick="openTab(event, 'Components')">Components</button>
                     <button class="tablinks" onclick="openTab(event, 'Other')">Other</button>
                 </div>
@@ -101,7 +101,8 @@
                                              :show-column-picker="showPicker"
                                              :paginated="paginated"
                                              :multi-column-sortable="multiColumnSortable"
-                                             :filter-case-sensitive="filterCaseSensitive">
+                                             :filter-case-sensitive="filterCaseSensitive"
+                                             :page-size=5>
                         </vue-bootstrap-table>
                     </div>
                     <div>
