@@ -1,4 +1,12 @@
-new Vue({
+//Handling row click
+//Method to handle clicked row in vue
+var handleRow = function (event, entry) {
+    rowResultHolder = "CLICK ROW: " + JSON.stringify(entry);
+    myVue.toolDetailFromRowClick = (entry);
+};
+
+//Vue components
+var myVue =new Vue({
     el: '#app',
     components: {
         VueBootstrapTable: VueBootstrapTable
@@ -26,7 +34,9 @@ new Vue({
         showPicker: true,
         paginated: true,
         multiColumnSortable: true,
-        filterCaseSensitive:false,
+        filterCaseSensitive: false,
+
+        handleRowFunction: handleRow,
         toolColumns: [
             {
                 title: "Tool Name",
@@ -49,6 +59,12 @@ new Vue({
             {
                 title: "Diameter",
                 name: "Diameter",
+                visible: true,
+                editable: true,
+            },
+            {
+                title: "Type",
+                name: "Type",
                 visible: true,
                 editable: true,
             }
@@ -76,7 +92,8 @@ new Vue({
                 editable: true,
             }
         ],
-        partValues: []
+        partValues: [],
+        toolDetailFromRowClick:""
     },
     //calling the method which load the json file at the loading of he page
     created: function () {
@@ -116,18 +133,9 @@ new Vue({
                     console.log(error);
                 });
             
-        },
+        }
 
         //testing         
-        toggleFilter: function () {
-            this.showFilter = !this.showFilter;
-        },
-        togglePicker: function () {
-            this.showPicker = !this.showPicker;
-        },
-        togglePagination: function () {
-            this.paginated = !this.paginated;
-        }
     },
     computed: {
         uniqueMachines: function () {
@@ -145,7 +153,7 @@ new Vue({
         },
         //This can be combined with the method follow, since vue-bootstrap-table already have built in table
         tools_filtered_by_searchAndBox: function () {
-            
+
             //rawResult_array recieve objects from filteredMachine, 
             //and will get filtered again into the global final_result_array
             var rawResult_array = this.tool_FilteredByMachine,
@@ -198,6 +206,15 @@ new Vue({
 
             if (selectedTInMachineName == "all") {
                 return vm.toolsJSON;
+            }
+            if (selectedTInMachineName == "notInstalled") {
+                this.rawFilter = [];
+                for (var i = 0, u = this.toolsJSON.length; i < u; i++) {
+                    if (this.toolsJSON[i].MachineSerial == 0) {
+                        vm.rawFilter.push(vm.toolsJSON[i]);
+                    }
+                }
+                return this.rawFilter;
             }
             else {
                 this.rawFilter = [];

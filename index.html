@@ -18,7 +18,7 @@
 
         <div>
             <nav class="navbar navbar-inverse">
-                <div class="row">
+                <div>
                     <div class="col-sm-4">
                         <div class="container-fluid">
                             <div class="navbar-header">
@@ -33,7 +33,7 @@
             </nav>
         </div>
         <!--Tool table-->
-        <div class="row">
+      
             <div class="col-sm-6">
                 <div>
                     <!--This table tag is still needed to generated array for the table, but should be remove when the script is edited-->
@@ -49,6 +49,7 @@
                         <label for="toolTable">Select tool from</label>
                             <select id="toolTable" v-model="SelectMachine">
                                 <option value="all" checked>All</option>
+                                <option value="notInstalled" >Not installed</option>
                                 <option v-for="machine in uniqueMachines">{{machine}}</option>
                             </select>
                     </div>
@@ -59,6 +60,7 @@
                                          :show-column-picker="showPicker"
                                          :paginated="paginated"
                                          :multi-column-sortable="multiColumnSortable"
+                                         :row-click-handler="handleRowFunction"
                                          :filter-case-sensitive="filterCaseSensitive">
                     </vue-bootstrap-table>
                 </div>
@@ -77,6 +79,7 @@
                     <div>
                         <p>suppose pa is selected</p>
                         <p>Print its info here</p>
+                        <p>{{toolDetailFromRowClick}}</p>
                     </div>
                 </div>
 
@@ -112,8 +115,7 @@
                     <p>Empty</p>
                 </div>
             </div>
-            
-        </div>
+       
     </div>
 
 

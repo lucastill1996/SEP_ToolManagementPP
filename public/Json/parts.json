@@ -1,60 +1,310 @@
 [
   {
-    "Identifier": "D123",
+    "Identifier": "49",
     "Type": "Die",
-    "Hitcount": 1948,
+    "Hitcount": 8,
     "Attributes": [
       {
         "Key": "Clearance",
-        "Value": "0.2",
-        "Part": {
-          "Identifier": "D123",
-          "Type": "Die",
-          "Hitcount": 1948
-        }
+        "Value": "0.2"
+
       },
       {
         "Key": "Height",
-        "Value": "15.0",
-        "Part": {
-          "Identifier": "D123",
-          "Type": "Die",
-          "Hitcount": 1948
-        }
+        "Value": "30.0"
+
       },
       {
         "Key": "Color",
-        "Value": "Yellow",
-        "Part": {
-          "Identifier": "D123",
-          "Type": "Die",
-          "Hitcount": 1948
-        }
+        "Value": "Not in use"
+
       },
       {
         "Key": "Installed",
-        "Value": "True",
-        "Part": {
-          "Identifier": "D123",
-          "Type": "Die",
-          "Hitcount": 1948
-        }
+        "Value": "false"
+
       }
     ],
-    "ToolId": "1"
+    "ToolId": "54"
   },
   {
-    "Identifier": "P123",
-    "Type": "Punch",
-    "Hitcount": 284,
-    "Attributes": [],
-    "ToolId": 2
+    "Identifier": "50",
+    "Type": "Die",
+    "Hitcount": 0,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.25"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "55"
   },
   {
-    "Identifier": "SU123",
-    "Type": "Stripper",
-    "Hitcount": 12317,
-    "Attributes": [],
-    "ToolId": 0
+    "Identifier": "51",
+    "Type": "Die",
+    "Hitcount": 8,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.25"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "56"
+  },
+  {
+    "Identifier": "56",
+    "Type": "Die",
+    "Hitcount": 604,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "true"
+
+      }
+    ],
+    "ToolId": "61"
+  },
+  {
+    "Identifier": "57",
+    "Type": "Die",
+    "Hitcount": 5780,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "true"
+
+      }
+    ],
+    "ToolId": "62"
+  },
+  {
+    "Identifier": "138",
+    "Type": "Die",
+    "Hitcount": 5780,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.5"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "151"
+  },
+  {
+    "Identifier": "130",
+    "Type": "Die",
+    "Hitcount": 0,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.3048"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "30.0"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "143"
+  },
+  {
+    "Identifier": "110",
+    "Type": "Die",
+    "Hitcount": 1836,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "32.1"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "true"
+
+      }
+    ],
+    "ToolId": "123"
+  },
+  {
+    "Identifier": "106",
+    "Type": "Die",
+    "Hitcount": 1192,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.3048"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "31.7"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "true"
+
+      }
+    ],
+    "ToolId": "143"
+  },
+  {
+    "Identifier": "112",
+    "Type": "Die",
+    "Hitcount": 0,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "31.7"
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "true"
+
+      }
+    ],
+    "ToolId": "125"
+  },
+  {
+    "Identifier": "112",
+    "Type": "Die",
+    "Hitcount": 0,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.5"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "35."
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "148"
   }
 ]
