@@ -3,9 +3,7 @@
     "Id": 1,
     "Name": "Machine 1",
     "Serial": "MA123",
-    "ToolIds": [
-      "1"
-    ]
+    "ToolIds": []
   },
   {
     "Id": 2,

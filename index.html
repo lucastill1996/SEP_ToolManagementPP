@@ -22,103 +22,125 @@
                     <div class="col-sm-4">
                         <div class="container-fluid">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#">SEProject</a>
+                                <a class="navbar-brand" href="#">Tool Management</a>
                             </div>
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Main App</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </nav>
         </div>
-        <!--Tool table-->
-      
-            <div class="col-sm-6">
-                <div>
-                    <!--This table tag is still needed to generated array for the table, but should be remove when the script is edited-->
-                    <table class='table table-hover'>
+        <!--Left screen-->
 
-                        <!--Tool table content-->
-                        <tr v-for="tool in tools_filtered_by_searchAndBox"></tr>
-                    </table>
-                </div>
-                <div>
+        <div v-bind:class="leftScreenSize">
 
-                    <div class="col-sm-12"  >                      
-                        <label for="toolTable">Select tool from</label>
+            <div class="tab">
+                <button class="tablinks" onclick="openLeftTab(event, 'Tools')" id="defaultOpen1">Tools</button>
+                <button class="tablinks" onclick="openLeftTab(event, 'Components')">Components</button>
+                <button class="tablinks" onclick="openLeftTab(event, 'add')">Add Items</button>
+            </div>
+            <div id="Tools" class="tabcontentLeft">
+                <div>
+                    <div>
+                       <br/>
+                        <!--Generating table content-->
+                       <div v-for="tool in tools_filtered_by_searchAndBox"></div>
+                    </div>
+                    <div>
+                        <div class="col-sm-12">
+                            <label for="toolTable">Select all tools from</label>
                             <select id="toolTable" v-model="SelectMachine">
                                 <option value="all" checked>All</option>
-                                <option value="notInstalled" >Not installed</option>
+                                <option value="notInstalled">Not installed</option>
                                 <option v-for="machine in uniqueMachines">{{machine}}</option>
                             </select>
-                    </div>
-                    <br /><br />
-                    <vue-bootstrap-table :columns="toolColumns"
-                                         :values="toolValues"
-                                         :show-filter="showFilter"
-                                         :show-column-picker="showPicker"
-                                         :paginated="paginated"
-                                         :multi-column-sortable="multiColumnSortable"
-                                         :row-click-handler="handleRowFunction"
-                                         :filter-case-sensitive="filterCaseSensitive">
-                    </vue-bootstrap-table>
-                </div>
-            </div>
-            <!--Middle screen-->
-            <div class="col-sm-6">
-
-                <div class="tab">
-                    <button class="tablinks" onclick="openTab(event, 'Details')" id="defaultOpen">Details</button>
-                    <button class="tablinks" onclick="openTab(event, 'Components')">Components</button>
-                    <button class="tablinks" onclick="openTab(event, 'Other')">Other</button>
-                </div>
-
-                <div id="Details" class="tabcontent">
-                    <h3>Details</h3>
-                    <div>
-                        <p>suppose pa is selected</p>
-                        <p>Print its info here</p>
-                        <p>{{toolDetailFromRowClick}}</p>
-                    </div>
-                </div>
-
-                <div id="Components" class="tabcontent">
-                    <h3>Components</h3>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label for="toolTable">Select part from</label>
-                                <select v-model="SelectMachine">
-                                    <option value="all" checked>All</option>
-                                    <option v-for="machine in uniqueMachines">{{machine}}</option>
-                                </select>
-                           
                         </div>
-                        <br /><br />
-                        <vue-bootstrap-table :columns="partColumns"
-                                             :values="partValues"
-                                             :show-filter="showFilter"
-                                             :show-column-picker="showPicker"
-                                             :paginated="paginated"
-                                             :multi-column-sortable="multiColumnSortable"
+                        <br />
+                        <br />
+                        <vue-bootstrap-table 
+                                             :columns="toolColumns" 
+                                             :values="toolValues" 
+                                             :show-filter="showFilter" 
+                                             :show-column-picker="showPicker" 
+                                             :paginated="paginated" 
+                                             :multi-column-sortable="multiColumnSortable" 
+                                             :row-click-handler="handleRowFunction" 
                                              :filter-case-sensitive="filterCaseSensitive"
-                                             :page-size=5>
+                                             :page-size=10>
                         </vue-bootstrap-table>
                     </div>
-                    <div>
-                        <p>suppose part with id d123 is selected</p>
-                        <p>Print its info here</p>
-                    </div>
-                </div>
-
-                <div id="Other" class="tabcontent">
-                    <h3>Other</h3>
-                    <p>Empty</p>
                 </div>
             </div>
-       
-    </div>
+            <div id="Components" class="tabcontentLeft">
+                <div class="row">
+                    <vue-bootstrap-table 
+                                         :columns="partColumns" 
+                                         :values="partValues" 
+                                         :show-filter="showFilter" 
+                                         :show-column-picker="showPicker" 
+                                         :paginated="paginated" 
+                                         :multi-column-sortable="multiColumnSortable" 
+                                         :row-click-handler="handleRowFunction" 
+                                         :filter-case-sensitive="filterCaseSensitive"
+                                         :page-size=10>
+                    </vue-bootstrap-table>
+                </div>
 
+            </div>
+            <div id="add" class="tabcontentLeft">
+                <h3>Add</h3>
+                <p>Empty</p>
+            </div>
+        </div>
+
+        <!--Right screen-->
+        <div v-if="rightScreenShow" class="rightScreenSize">
+
+            <div class="tab">
+                <button class="tablinks" onclick="openRightTab(event, 'Details')" id="defaultOpen">Details</button>
+
+                <button class="tablinks" onclick="openRightTab(event, 'Other')">Other</button>
+            </div>
+
+            <div id="Details" class="tabcontentRight">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div v-if="toolDetailFromRowClicked">
+                            <h3 v-if = "selectedRowIsTool">Detailed Tool Info</h3>
+                            <h3 v-if = "!selectedRowIsTool">Detailed Part Info</h3>
+                        </div>
+                        <div>
+                            <table class="table table-responsive">
+                                <tr v-for="key in selectedToolArrayKeys">
+                                    <th>{{key}}</th>
+                                    <td>{{selectedToolArrayValues[selectedToolArrayKeys.indexOf(key)]}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div >
+                            <h3 v-if="selectedRowIsTool">Included Parts Info</h3>
+                        </div>
+                        <div v-if="selectedRowIsTool">
+                            <div v-for="part in selectedTool_IncludedPartsValueFilter"></div>
+                            <div>
+                                <vue-bootstrap-table :columns="partColumns"
+                                                     :values="selectedTool_IncludedPartsValue"
+                                                     :row-click-handler="handleRowFunction" 
+                                                     :show-column-picker="showPicker">
+                                </vue-bootstrap-table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="Other" class="tabcontentRight">
+                <h3>Other</h3>
+                <p>Empty</p>
+            </div>
+        </div>
+
+    </div>
 
     <!--Script-->
     <script src="Scripts/lodash.js"></script>

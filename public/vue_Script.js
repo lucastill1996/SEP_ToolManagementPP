@@ -3,70 +3,80 @@
 var handleRow = function (event, entry) {
     rowResultHolder = "CLICK ROW: " + JSON.stringify(entry);
     myVue.toolDetailFromRowClick = (entry);
+    myVue.selectedToolArrayKeys = [];
+    myVue.selectedToolArrayValues = [];
+    Object.keys(entry).forEach(function (key) {        
+        myVue.selectedToolArrayKeys.push(key);
+        myVue.selectedToolArrayValues.push(entry[key]);     
+    });
+    //after adding key/value decide if the clicked row is a tool
+    //this is only possible since only tool.json has attribute "toolID"
+    if (myVue.selectedToolArrayKeys.indexOf("toolID") > -1) {
+        myVue.selectedRowIsTool = true;
+    };
+    if (myVue.selectedToolArrayKeys.indexOf("toolID") == -1) {
+        myVue.selectedRowIsTool = false;
+    }
+    myVue.toolDetailFromRowClicked = true;
+    myVue.leftScreenSize = "col-sm-6";
+    myVue.rightScreenShow = true;
 };
 
 //Vue components
-var myVue =new Vue({
+var myVue = new Vue({
     el: '#app',
     components: {
         VueBootstrapTable: VueBootstrapTable
     },
     data: {
-        sortKey: '',
-        reverse: false,
-        searchString: '',
+        //misc variable to bind the class for 2 side of the screen, used to assign space
+        leftScreenSize: "col-sm-12",
+        rightScreenSize: "col-sm-6",
+        rightScreenShow: false,
 
         SelectMachine: 'all',
         //Arrays for machine, tools, parts
         machineJSON: [],
         toolsJSON: [],
-        partsJSON:[],
+        partsJSON: [],
         //Array consist of filtered result from the combo box
         rawFilter: [],
         //Array to keep track of which machine was selected by comboBox
         listofSelectedMachines: [],
         //Array consist of the filtered result from BOTH comboBox and searchBar
         final_result_array: [],
-        //Testing
-
-        logging: [],
+        //Variable used for vue-bootstrap-table
         showFilter: true,
         showPicker: true,
         paginated: true,
         multiColumnSortable: true,
         filterCaseSensitive: false,
-
         handleRowFunction: handleRow,
+        //tables Information
         toolColumns: [
             {
                 title: "Tool Name",
-                name:"Name",
+                name: "Name",
                 visible: true,
                 editable: false,
-            },
-            {
-                title: "Shape",
-                name: "Shape",
-                visible: true,
-                editable: true,
-            },
-            {
-                title: "Size",
-                name: "Size",
-                visible: true,
-                editable: true,
-            },
-            {
-                title: "Diameter",
-                name: "Diameter",
-                visible: true,
-                editable: true,
             },
             {
                 title: "Type",
                 name: "Type",
                 visible: true,
-                editable: true,
+                editable: false,
+            },
+            {
+                title: "Station Number",
+                name: "StationNumber",
+                visible: true,
+                editable: false,
+            },
+            {
+                title: "Owning Machine ID",
+                name: "MachineSerial",
+                visible: true,
+                editable: false,
             }
         ],
         toolValues: [],
@@ -83,17 +93,33 @@ var myVue =new Vue({
                 title: "Type",
                 name: "Type",
                 visible: true,
-                editable: true,
+                editable: false,
             },
             {
                 title: "Hitcount",
                 name: "Hitcount",
                 visible: true,
-                editable: true,
+                editable: false,
+            },
+            {
+                title: "Owning tool ID",
+                name: "ToolId",
+                visible: true,
+                editable: false,
             }
         ],
         partValues: [],
-        toolDetailFromRowClick:""
+
+
+        toolDetailFromRowClicked: false,// used to hide the detail screen until the user click on a tool
+        toolDetailFromRowClick: "",//recieving an object from the table which the user click
+        selectedToolArrayKeys: [],//Used to store keys from toolsJSON
+        selectedToolArrayValues: [],//Used to store valye from toolsJSON
+        selectedTool_IncludedPartsValue: [],//storing value for seleted tool's part
+        selectedRowIsTool: false,
+        //Variable used to generate dynamic columns
+        allToolKeys: ["Name", "Type", "StationNumber", "MachineSerial"],//Used to hold information of which tool column was added
+        addPartKeys: ["Identifier", "Type", "Hitcount", "ToolId"]//Used to hold information of which part column was added
     },
     //calling the method which load the json file at the loading of he page
     created: function () {
@@ -120,6 +146,7 @@ var myVue =new Vue({
             axios.get(jsonURL2)
                 .then(function (response) {
                     self.toolsJSON = response.data;
+                    self.getToolHeaders();
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -128,14 +155,51 @@ var myVue =new Vue({
             axios.get(jsonURL3)
                 .then(function (response) {
                     self.partsJSON = response.data;
+                    self.getPartHeaders();
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-            
-        }
 
-        //testing         
+        },
+        //get and generate all possible headers for tool and part table
+        getToolHeaders: function () {
+            var self = this;
+            for (var i = 0, u = self.toolsJSON.length; i < u; i++) {
+                Object.keys(self.toolsJSON[i]).forEach(function (key) {
+                    if (self.allToolKeys.indexOf(key) == -1) {
+                        self.allToolKeys.push(key)
+                        self.toolColumns.push(
+                            {
+                                title: key,
+                                name: key,
+                                visible: false,
+                                editable: false,
+                            }
+                        );
+                    }
+                });
+            }
+        },
+        getPartHeaders: function () {
+            var self = this;
+            for (var i = 0, u = self.partsJSON.length; i < u; i++) {
+                Object.keys(self.partsJSON[i]).forEach(function (key) {
+                    if (self.addPartKeys.indexOf(key) == -1) {
+                        self.addPartKeys.push(key)
+                        self.partColumns.push(
+                            {
+                                title: key,
+                                name: key,
+                                visible: false,
+                                editable: false,
+                            }
+                        );
+                    }
+                });
+            }
+
+        }
     },
     computed: {
         uniqueMachines: function () {
@@ -153,11 +217,9 @@ var myVue =new Vue({
         },
         //This can be combined with the method follow, since vue-bootstrap-table already have built in table
         tools_filtered_by_searchAndBox: function () {
-
             //rawResult_array recieve objects from filteredMachine, 
             //and will get filtered again into the global final_result_array
-            var rawResult_array = this.tool_FilteredByMachine,
-                searchString = this.searchString;
+            var rawResult_array = this.tool_FilteredByMachine;
             var selectedTInMachineName = this.SelectMachine;
             var self = this;
             //If the list of selected machine, empty the result array
@@ -186,19 +248,6 @@ var myVue =new Vue({
                 this.toolValues = this.final_result_array;
                 this.partValues = this.partsJSON;
             }
-
-            if (!searchString) {
-                return this.final_result_array;
-            }
-
-            searchString = searchString.trim().toLowerCase();
-
-            rawResult_array = rawResult_array.filter(function (item) {
-                if (item.Name.toLowerCase().indexOf(searchString) !== -1) {
-                    return item;
-                }
-            })
-            return rawResult_array;
         },
         tool_FilteredByMachine: function () {
             var vm = this;
@@ -227,12 +276,28 @@ var myVue =new Vue({
                             var middleManFor_X = x;
                             var middleManFor_I = i;
                             if (vm.machineJSON[middleManFor_I].ToolIds.indexOf(vm.toolsJSON[middleManFor_X].toolID) > -1) {
-                                vm.rawFilter.push(vm.toolsJSON[middleManFor_X]);
+                                vm.rawFilter.push(vm.toolsJSON[middleManFor_X]);                           
                             }
                         }
                     }
                 }
                 return this.rawFilter;
+            }
+        },
+
+        //preparing value for included part info
+        selectedTool_IncludedPartsValueFilter: function () {
+            var self = this;
+            this.selectedTool_IncludedPartsValue = [];
+            //Loop and get all part in tool
+            for (var i = 0, u = self.toolDetailFromRowClick.PartIds.length; i < u; i++) {
+                //search for this tool in the json
+                for (var x = 0, y = self.partsJSON.length; x < y; x++){
+                    if (self.toolDetailFromRowClick.PartIds[i] == self.partsJSON[x].Identifier) {
+                        self.selectedTool_IncludedPartsValue.push(self.partsJSON[x])
+                        break;//breaking since part id are unique.
+                    }
+                }
             }
         }
     }

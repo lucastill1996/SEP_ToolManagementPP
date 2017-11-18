@@ -10,7 +10,7 @@
     "StationNumber": 0,
     "MachineSerial": "0",
     "Type": "Standard Tool",
-    "PartIds": [ "49" ]
+    "PartIds": [ "49","20" ]
   },
   {
     "toolID": "55",

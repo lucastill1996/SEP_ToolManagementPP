@@ -306,5 +306,33 @@
       }
     ],
     "ToolId": "148"
+  },
+  {
+    "Identifier": "20",
+    "Type": "Laser",
+    "Hitcount": 0,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.5"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "35."
+
+      },
+      {
+        "Key": "Color",
+        "Value": "Not in use"
+
+      },
+      {
+        "Key": "Installed",
+        "Value": "false"
+
+      }
+    ],
+    "ToolId": "54"
   }
 ]
