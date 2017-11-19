@@ -1,52 +1,170 @@
 .mBtn {
-    background-color: #000000;
-    color: red;
+    background-color: #262626;
+    color: white;
 }
-.navbar {
-    border-radius: 0;
-	background-color: #1f1f1f;
-	color:blue;
-}
-
-#bt1{
-	width:80%;
-	height:40px;
-	float: left;
-	border-radius:0;
-}
-#bt{
-	width:80%;
-	height:40px;
-	float: left;
-	border-radius:0;
+/*The following is for fading tab for the middle part of the application*/
+body {
+    font-family: Arial;
 }
 
-#bt2{
-	width:95%;
-	height:40px;
-border-radius:0;
-
-}
-#bt3{
-		width:95%;
-	height:40px;
-	float: left;
-	border-radius:0;
+/* Style the tab */
+div.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
 
+    /* Style the buttons inside the tab */
+    div.tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 4.5px 5.5px;
+        transition: 0.3s;
+        font-size: 17px;
+    }
 
-input.searchbox{
-width:200px;
-border-radius:0;
-float: left;
+        /* Change background color of buttons on hover */
+        div.tab button:hover {
+            background-color: #ddd;
+        }
+
+        /* Create an active/current tablink class */
+        div.tab button.active {
+            background-color: #ccc;
+        }
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
 }
-#namebox{
 
-   width:95%
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
-#notebox{
-	height:250px;
-   width:95%;
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#addfiled{
+
+ float: right;
+      position: relative;
+      right: 30%;
+  margin-top:5px;
+   margin-right:45px;
+}
+#labelposi{
+
+ float: left;
+      position: relative;
+      left: 40%;
+  margin-top:5px;
+   margin-right:45px;
+}
+#addfiled1{
+
+  float:right;
+  margin-top:20px;
+   margin-right:45px;
 }
 
 
+div.tab1 {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+div.tab1 button {
+    display: block;
+    background-color: inherit;
+    color: black;
+    padding: 22px 16px;
+    outline: none;
+	border: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+
+	
+}
+
+/* Change background color of buttons on hover */
+div.tab1 button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+div.tab1 button.active {
+    background-color: #ccc;
+}
+
+
+#contactForm { 
+  display: none;
+
+  border: 6px solid ; 
+  padding: 2em;
+  width: 400px;
+  text-align: center;
+  background: #fff;
+  position: fixed;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%) 
+}
+
+input, textarea { 
+
+  font-family: inherit; 
+  text-transform: inherit; 
+  font-size: inherit;
+  
+  display: block; 
+
+  padding: .4em;
+}
+textarea { height: 80px; resize: none; }
+
+.formBtn { 
+  width: 140px;
+  display: inline-block;
+  
+
+  font-weight: 100;
+  font-size: 1.2em;
+  border: none;
+  height: 30px;
+}
+
+
+label {
+    /* Other styling.. */
+    text-align: right;
+    clear: both;
+    float:left;
+ 
+}
