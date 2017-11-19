@@ -14,123 +14,189 @@
 </head>
 
 <body>
-    <div id="app">  
-	
+    <div id="app">
+
         <div>
             <nav class="navbar navbar-inverse">
-                <div class="row">
+                <div>
                     <div class="col-sm-4">
-
                         <div class="container-fluid">
                             <div class="navbar-header">
-                                <a class="navbar-brand" href="#">SEProject</a>
+                                <a class="navbar-brand" href="#">Tool Management</a>
                             </div>
-                            <ul class="nav navbar-nav">
-                                <li><a href="#">Tool Library</a></li>
-                                <li class="active"><a href="#">Machines</a></li>
-                            </ul>
                         </div>
-
-                    </div>
-                    <div class="col-sm-4">
-                        <input type="text" class="form-control" v-model="searchString" />
-                    </div>
-                    <div class="col-sm-4">
-                        <select v-model="SelectMachine">
-                            <option value="all" checked>All</option>
-                            <option v-for="machine in uniqueMachines">{{machine}}</option>
-                        </select>
                     </div>
                 </div>
             </nav>
         </div>
-        <!--Machines-->
-        <div class="col-sm-4">
-           <input class="searchbox" placeholder="Search tools" type="text" v-model="searchString"></input></br>
-            <div>
-			<div  class="row"></br>
-			</div>
-                <table class='table table-hover'>
-                    <tr>
-                        <th>Tool</th>
-                        <th>Tool Category</th>
-                        <th>Hit Count</th>
-                    </tr>
-                    <!--Tool table content-->
+        <!--Left screen-->
 
-                    <tr v-for="machine in filtered">
-                        <td>{{machine.tName}}</td>
-                        <td>{{machine.tCategory}}</td>
-                        <td>{{machine.hitCount}}</td>
-                    </tr>
-                </table>
+        <div v-bind:class="leftScreenSize">
+
+            <div class="tab">
+                <button class="tablinks" v-on:click="turnBackMiddleTable()" onclick="openLeftTab(event, 'Tools')" id="defaultOpen">Tools</button>
+                <button class="tablinks" v-on:click="clearMiddleTable()" onclick="openLeftTab(event, 'Parts')">Parts</button>
+                <button class="tablinks" v-on:click="clearAllDetailPage()" onclick="openLeftTab(event, 'add')">Add Items</button>
             </div>
 			
+			<!-- for adding items -->
+			
+				
+				<div id="addmachine" class="tabcontentLeft">
+				<form action="#">
+					<label id="labelposi">Machine name</label><input placeholder="Machine name"  type="text"  id="addfiled" required/>
+					<label id="labelposi">Serial</label><input placeholder="Serial" type="text"  id="addfiled" required />
+					<label></label><input class="formBtn" type="button" id="addfiled" value="Add" />
+				   <input class="formBtn" type="reset" value="Reset" id="addfiled" /> 
+				   </form>
+				</div>
+
+				
+				<div id="addtool" class="tabcontentLeft">
+					<form action="#">
+					
+					<label id="labelposi">Tool name</label><input placeholder="Tool name" type="text" v-model="tname" id="addfiled" required/>
+					<label id="labelposi">Tool ID</label><input placeholder="ID" type="text" v-model="tID" id="addfiled" required />
+					<label id="labelposi">Type</label><input placeholder="Type" type="text" v-model="tType" id="addfiled" required />
+					<label id="labelposi">Last service</label><input placeholder="Last service" v-model="tLService" type="text" id="addfiled" required/>
+					<label id="labelposi">Tool Size</label><input placeholder="Size" type="text" v-model="tSize" id="addfiled" required/>
+					<label id="labelposi">Shape</label><input placeholder="Shape" type="text" v-model="tShape" id="addfiled" required   />
+			
+			
+					<label></label><input class="formBtn" type="button" id="addfiled" value="Add" v-on:click="addFunction" />
+				   <input class="formBtn" type="reset" value="Reset" id="addfiled" /> 
+					
+					</form>
+				</div>
+				
+				<div id="addpart" class="tabcontentLeft">
+					<form action="#">
+					<label id="labelposi">Identifier</label><input placeholder="Identifier"  type="text"  id="addfiled" required/>
+					<label id="labelposi">Type</label><input placeholder="Type" type="text"  id="addfiled" required />
+					<label id="labelposi">Hit count</label><input placeholder="Hit count" type="text"  id="addfiled" required />
+					<label></label><input class="formBtn" type="button" id="addfiled" value="Add" />
+				   <input class="formBtn" type="reset" value="Reset" id="addfiled" /> 
+				   </form>
+				</div>
+			
+            <div id="Tools" class="tabcontentLeft">
+                <div>
+                    <div>
+                       <br/>
+                        <!--Generating table content-->
+                       <div v-for="tool in tools_filtered_by_searchAndBox"></div>
+                    </div>
+                    <div>
+                        <div class="col-sm-12">
+                            <label for="toolTable">Select all tools from</label>
+                            <select id="toolTable" v-model="SelectMachine">
+                                <option value="all" checked>All</option>
+                                <option value="notInstalled">Not installed</option>
+                                <option v-for="machine in uniqueMachines">{{machine}}</option>
+                            </select>
+                        </div>
+                        <!--Main tool table-->
+                        <vue-bootstrap-table 
+                                             :columns="toolColumns" 
+                                             :values="toolValues" 
+                                             :show-filter="showFilter" 
+                                             :show-column-picker="showPicker" 
+                                             :paginated="paginated" 
+                                             :multi-column-sortable="multiColumnSortable" 
+                                             :row-click-handler="handleRowFunction" 
+                                             :filter-case-sensitive="filterCaseSensitive"
+                                             :page-size=10>
+                        </vue-bootstrap-table>
+                    </div>
+                </div>
+            </div>
+            <div id="Parts" class="tabcontentLeft">
+                <div >
+                    <br />
+                    <!--Main Part table-->
+                    <vue-bootstrap-table 
+                                         :columns="partColumns" 
+                                         :values="partValues" 
+                                         :show-filter="showFilter" 
+                                         :show-column-picker="showPicker" 
+                                         :paginated="paginated" 
+                                         :multi-column-sortable="multiColumnSortable" 
+                                         :row-click-handler="handleRowFunction" 
+                                         :filter-case-sensitive="filterCaseSensitive"
+                                         :page-size=10>
+                    </vue-bootstrap-table>
+                </div>
+
+            </div>
+            <div id="add" class="tabcontentLeft">
+					 <div class="tab1">
+					 <button class="tablinks" onclick="openLeftTab(event, 'addmachine')">Add Machine</button>
+						<button class="tablinks" onclick="openLeftTab(event, 'addtool')">Add Tool</button>
+						
+						<button class="tablinks" onclick="openLeftTab(event, 'addpart')">Add Part</button>
+					</div>
+                </div>
         </div>
-        <!--Machine's tools-->
-        <div class="col-sm-4">
-           <input class="searchbox" placeholder="Search toolInfo" type="text" v-model="searchString"></input></br>
-		   <div  class="row"></br>
-				<div class="col-sm-4"><button id="bt1" type="button">Detail</button></div>
-				<div class="col-sm-4"><button id="bt2" type="button">Component</button></div>
-				<div class="col-sm-4"><button id="bt3" type="button">Other</button></div>
-			</div>
+
+        <!--Right screen-->
+        <div v-if="rightScreenShow" class="rightScreenSize">
             <div>
-                <table class='table table-hover'>
-                    <tr>
-                        <th>Tool</th>
-                        <th>Tool Category</th>
-                        <th>Hit Count</th>
-                    </tr>
-                    <!--Tool table content-->
-                   
-                        <tr v-for="machine in filtered">					
-                            <td>{{machine.tName}}</td>
-                            <td>{{machine.tCategory}}</td>
-                            <td>{{machine.hitCount}}</td>						
-                        </tr>                    
-                </table>
+                <div v-if="detailPageOn" class="row">
+                    <!--Middle table. 2 version to keep track of previously clicked tool-->
+                    <div v-if="!clearMiddleTableNow" class="col-sm-4">
+                        <div>
+                            <h3>Tool {{middleTableToolLabel}} Included Parts</h3>
+                        </div>
+                        <div v-if="selectedRowIsTool">                      
+                            <div >
+                                <div v-for="part in selectedTool_IncludedPartsValueFilter"></div>
+                                <div>
+                                    <vue-bootstrap-table :columns="partColumns"
+                                                         :values="selectedTool_IncludedPartsValue"
+                                                         :row-click-handler="handleRowFunction"
+                                                         :show-column-picker="showPicker">
+                                    </vue-bootstrap-table>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="!selectedRowIsTool">
+                            <div>
+                                <vue-bootstrap-table :columns="partColumns"
+                                                     :values="selectedTool_IncludedPartsValue_OldSearchTracker"
+                                                     :row-click-handler="handleRowFunction"
+                                                     :show-column-picker="showPicker">
+                                </vue-bootstrap-table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div v-if="toolDetailFromRowClicked">
+                            <h3 v-if="selectedRowIsTool">Tool {{toolDetailFromRowClick.Name}} Detailed Info</h3>
+                            <h3 v-if="!selectedRowIsTool">Part {{toolDetailFromRowClick.Identifier}} Detailed Info</h3>
+                        </div>
+                        <div>
+                            <table class="table table-responsive">
+                                <tr v-for="key in selectedToolArrayKeys">
+                                    <th>{{key}}</th>
+                                    <td>{{selectedToolArrayValues[selectedToolArrayKeys.indexOf(key)]}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-		
-		
-        <!--Tool details-->
-        <div class="col-sm-4">		
-            <h3 style="display:inline">Details</h3>
-			
-			<div  class="row"></br>
-				<div class="col-sm-5"><button id="bt" type="button">Edit</button></div>
-			</div>
-			
-			<div  class="row"></br>
-				<div class="col-sm-2"><label>ID</label></div>
-				<div class="col-sm-10"><input type="text" id="namebox" value="Toolname 1"></div>
-			</div>
-			
-			<div  class="row"></br>
-				<div class="col-sm-2"><label>Type</label></div>
-				<div class="col-sm-5"><input type="text" id="namebox" value="Punching | Forming | Wheel"></div>
-				<div class="col-sm-5"><input type="text" id="namebox" value="Square | Round | Rectangle"></div>
-			</div>
-			
-			<div  class="row"></br>
-				<div class="col-sm-2"><label>Heatcount</label></div>
-				<div class="col-sm-10"><input type="text" id="namebox" value="A | B | C | D | E"></div>
-			</div>
-			
-			<div  class="row"></br>
-				<div class="col-sm-2"><label>Notes</label></div>
-				<div class="col-sm-10"><input type="text" id="notebox" value=""></div>
-			</div>
-		</div>
+
     </div>
+
     <!--Script-->
-
-
     <script src="Scripts/lodash.js"></script>
     <script src="Scripts/vue.js"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="public/script.js"></script>
+    <script src="Scripts/vue-bootstrap-table.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="public/scriptForTabs.js"></script>
+    <script src="public/vue_Script.js"></script>
 </body>
 
 </html>
