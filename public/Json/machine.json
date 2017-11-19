@@ -1,34 +1,43 @@
 [
-  {
-    "Id": 1,
-    "Name": "Machine 1",
-    "Serial": "MA123",
-    "ToolIds": []
-  },
-  {
-    "Id": 2,
-    "Name": "Machine 2",
-    "Serial": "MA237",
-    "ToolIds": [
-      "61",
-      "62",
-      "125"
-    ]
-  },
-  {
-    "Id": 3,
-    "Name": "Machine 3",
-    "Serial": "MA521",
-    "ToolIds": [
-      "143"
-    ]
-  },
-  {
-    "Id": 4,
-    "Name": "Machine 4",
-    "Serial": "MA172",
-    "ToolIds": [
-      "119","123"
-    ]
-  }
+    {
+        "Serial": "BC100",
+        "Name": "BCe Smart",
+        "ToolIds": [
+            56,
+            9
+        ]
+    },
+    {
+        "Serial": "CG100",
+        "Name": "Combi Genius",
+        "ToolIds": [
+            3,
+            4,
+            5
+        ]
+    },
+    {
+        "Serial": "L100",
+        "Name": "Laserdyne 606D",
+      "ToolIds": [
+        10,
+        12
+      ]
+    },
+    {
+        "Serial": "PG100",
+        "Name": "Punch Genius",
+        "ToolIds": [
+            1,
+            2
+        ]
+    },
+    {
+        "Serial": "SG100",
+        "Name": "Shear Genius",
+        "ToolIds": [
+            6,
+            7
+        ]
+    }
 ]

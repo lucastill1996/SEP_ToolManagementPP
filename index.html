@@ -34,9 +34,9 @@
         <div v-bind:class="leftScreenSize">
 
             <div class="tab">
-                <button class="tablinks" onclick="openLeftTab(event, 'Tools')" id="defaultOpen1">Tools</button>
-                <button class="tablinks" onclick="openLeftTab(event, 'Components')">Components</button>
-                <button class="tablinks" onclick="openLeftTab(event, 'add')">Add Items</button>
+                <button class="tablinks" v-on:click="turnBackMiddleTable()" onclick="openLeftTab(event, 'Tools')" id="defaultOpen">Tools</button>
+                <button class="tablinks" v-on:click="clearMiddleTable()" onclick="openLeftTab(event, 'Parts')">Parts</button>
+                <button class="tablinks" v-on:click="clearAllDetailPage()" onclick="openLeftTab(event, 'add')">Add Items</button>
             </div>
             <div id="Tools" class="tabcontentLeft">
                 <div>
@@ -54,8 +54,7 @@
                                 <option v-for="machine in uniqueMachines">{{machine}}</option>
                             </select>
                         </div>
-                        <br />
-                        <br />
+                        <!--Main tool table-->
                         <vue-bootstrap-table 
                                              :columns="toolColumns" 
                                              :values="toolValues" 
@@ -70,8 +69,10 @@
                     </div>
                 </div>
             </div>
-            <div id="Components" class="tabcontentLeft">
-                <div class="row">
+            <div id="Parts" class="tabcontentLeft">
+                <div >
+                    <br />
+                    <!--Main Part table-->
                     <vue-bootstrap-table 
                                          :columns="partColumns" 
                                          :values="partValues" 
@@ -94,19 +95,40 @@
 
         <!--Right screen-->
         <div v-if="rightScreenShow" class="rightScreenSize">
+            <div>
+                <div v-if="detailPageOn" class="row">
+                    <!--Middle table. 2 version to keep track of previously clicked tool-->
+                    <div v-if="!clearMiddleTableNow" class="col-sm-4">
+                        <div>
+                            <h3>Tool {{middleTableToolLabel}} Included Parts</h3>
+                        </div>
+                        <div v-if="selectedRowIsTool">                      
+                            <div >
+                                <div v-for="part in selectedTool_IncludedPartsValueFilter"></div>
+                                <div>
+                                    <vue-bootstrap-table :columns="partColumns"
+                                                         :values="selectedTool_IncludedPartsValue"
+                                                         :row-click-handler="handleRowFunction"
+                                                         :show-column-picker="showPicker">
+                                    </vue-bootstrap-table>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-if="!selectedRowIsTool">
+                            <div>
+                                <vue-bootstrap-table :columns="partColumns"
+                                                     :values="selectedTool_IncludedPartsValue_OldSearchTracker"
+                                                     :row-click-handler="handleRowFunction"
+                                                     :show-column-picker="showPicker">
+                                </vue-bootstrap-table>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="tab">
-                <button class="tablinks" onclick="openRightTab(event, 'Details')" id="defaultOpen">Details</button>
-
-                <button class="tablinks" onclick="openRightTab(event, 'Other')">Other</button>
-            </div>
-
-            <div id="Details" class="tabcontentRight">
-                <div class="row">
                     <div class="col-sm-2">
                         <div v-if="toolDetailFromRowClicked">
-                            <h3 v-if = "selectedRowIsTool">Detailed Tool Info</h3>
-                            <h3 v-if = "!selectedRowIsTool">Detailed Part Info</h3>
+                            <h3 v-if="selectedRowIsTool">Tool {{toolDetailFromRowClick.Name}} Detailed Info</h3>
+                            <h3 v-if="!selectedRowIsTool">Part {{toolDetailFromRowClick.Identifier}} Detailed Info</h3>
                         </div>
                         <div>
                             <table class="table table-responsive">
@@ -117,26 +139,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div >
-                            <h3 v-if="selectedRowIsTool">Included Parts Info</h3>
-                        </div>
-                        <div v-if="selectedRowIsTool">
-                            <div v-for="part in selectedTool_IncludedPartsValueFilter"></div>
-                            <div>
-                                <vue-bootstrap-table :columns="partColumns"
-                                                     :values="selectedTool_IncludedPartsValue"
-                                                     :row-click-handler="handleRowFunction" 
-                                                     :show-column-picker="showPicker">
-                                </vue-bootstrap-table>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-            <div id="Other" class="tabcontentRight">
-                <h3>Other</h3>
-                <p>Empty</p>
             </div>
         </div>
 

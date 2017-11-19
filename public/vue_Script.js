@@ -3,23 +3,28 @@
 var handleRow = function (event, entry) {
     rowResultHolder = "CLICK ROW: " + JSON.stringify(entry);
     myVue.toolDetailFromRowClick = (entry);
+    if (entry.hasOwnProperty("Name")) {
+        myVue.middleTableToolLabel = entry.Name
+    }   
     myVue.selectedToolArrayKeys = [];
     myVue.selectedToolArrayValues = [];
-    Object.keys(entry).forEach(function (key) {        
-        myVue.selectedToolArrayKeys.push(key);
-        myVue.selectedToolArrayValues.push(entry[key]);     
+    Object.keys(entry).forEach(function (key) {          
+            myVue.selectedToolArrayKeys.push(key);
+            myVue.selectedToolArrayValues.push(entry[key]);
     });
-    //after adding key/value decide if the clicked row is a tool
-    //this is only possible since only tool.json has attribute "toolID"
-    if (myVue.selectedToolArrayKeys.indexOf("toolID") > -1) {
+    //after adding key/value decide if the clicked row is a tool or part
+    //this is only possible since only tool.json has attribute "Id", case sensitive!
+    if (myVue.selectedToolArrayKeys.indexOf("Id") > -1) {
         myVue.selectedRowIsTool = true;
     };
-    if (myVue.selectedToolArrayKeys.indexOf("toolID") == -1) {
+    if (myVue.selectedToolArrayKeys.indexOf("Id") == -1) {
         myVue.selectedRowIsTool = false;
     }
+
     myVue.toolDetailFromRowClicked = true;
     myVue.leftScreenSize = "col-sm-6";
     myVue.rightScreenShow = true;
+    myVue.selectedTool_IncludedPartsValue_OldSearchTracker = myVue.selectedTool_IncludedPartsValue;
 };
 
 //Vue components
@@ -73,7 +78,7 @@ var myVue = new Vue({
                 editable: false,
             },
             {
-                title: "Owning Machine ID",
+                title: "Owning Machine Serial",
                 name: "MachineSerial",
                 visible: true,
                 editable: false,
@@ -115,11 +120,15 @@ var myVue = new Vue({
         toolDetailFromRowClick: "",//recieving an object from the table which the user click
         selectedToolArrayKeys: [],//Used to store keys from toolsJSON
         selectedToolArrayValues: [],//Used to store valye from toolsJSON
-        selectedTool_IncludedPartsValue: [],//storing value for seleted tool's part
+        selectedTool_IncludedPartsValue: [],//storing value for selected tool's part
+        selectedTool_IncludedPartsValue_OldSearchTracker:[],//storing value for previously selected toool's part
         selectedRowIsTool: false,
+        clearMiddleTableNow: false,
+        detailPageOn: true,
+        middleTableToolLabel:"",
         //Variable used to generate dynamic columns
         allToolKeys: ["Name", "Type", "StationNumber", "MachineSerial"],//Used to hold information of which tool column was added
-        addPartKeys: ["Identifier", "Type", "Hitcount", "ToolId"]//Used to hold information of which part column was added
+        addPartKeys: ["Identifier", "Type", "Hitcount", "ToolId"],//Used to hold information of which part column was added
     },
     //calling the method which load the json file at the loading of he page
     created: function () {
@@ -155,6 +164,7 @@ var myVue = new Vue({
             axios.get(jsonURL3)
                 .then(function (response) {
                     self.partsJSON = response.data;
+                    self.reformatPartJSON();
                     self.getPartHeaders();
                 })
                 .catch(function (error) {
@@ -199,9 +209,46 @@ var myVue = new Vue({
                 });
             }
 
+        },
+        reformatPartJSON: function () {
+            //loop through the raw partJSON
+            //console.log(this.partsJSON[0].Attributes)
+            for (var i = 0, u = this.partsJSON.length; i < u; i++) {
+                //for each object, loops through them
+                var self = this;
+                var attributesCounter = this.partsJSON[i].Attributes.length;
+                //Then copy the attribute inside "Attribute" to the partsJSON
+                for (var x = 0, y = attributesCounter; x < y; x++) {
+                    var key = self.partsJSON[i].Attributes[x].Key
+                    var value = self.partsJSON[i].Attributes[x].Value;
+                    self.partsJSON[i][self.partsJSON[i].Attributes[x].Key] = self.partsJSON[i].Attributes[x].Value;
+                }
+                //Remove "Attributes" since it is no longer need
+                delete self.partsJSON[i].Attributes;
+            }
+        },
+        clearMiddleTable: function () {
+            this.clearMiddleTableNow = true;
+            this.detailPageOn = true;
+            this.selectedToolArrayKeys = [];
+            this.selectedToolArrayValues = [];
+            this.leftScreenSize = "col-sm-6";
+            this.selectedRowIsTool=false;
+            this.toolDetailFromRowClick = [];
+        },
+        turnBackMiddleTable: function () {
+            this.detailPageOn = true;
+            this.clearMiddleTableNow = false;
+            this.leftScreenSize = "col-sm-6";
+           
+        },
+        clearAllDetailPage: function () {
+            this.detailPageOn = false;
+            this.leftScreenSize = "col-sm-12";
         }
     },
     computed: {
+        //Getting unique machine names for combobox
         uniqueMachines: function () {
             var self = this;
             var mules = [];
@@ -215,7 +262,7 @@ var myVue = new Vue({
             result = _.uniq(_.map(mules, 'mName'));
             return result;
         },
-        //This can be combined with the method follow, since vue-bootstrap-table already have built in table
+        //This can be combined with the method follow, since vue-bootstrap-table already have built in table search
         tools_filtered_by_searchAndBox: function () {
             //rawResult_array recieve objects from filteredMachine, 
             //and will get filtered again into the global final_result_array
@@ -275,19 +322,22 @@ var myVue = new Vue({
                             //if found, push this tool to rawFilter
                             var middleManFor_X = x;
                             var middleManFor_I = i;
-                            if (vm.machineJSON[middleManFor_I].ToolIds.indexOf(vm.toolsJSON[middleManFor_X].toolID) > -1) {
+                            if (vm.machineJSON[middleManFor_I].ToolIds.
+                                indexOf((vm.toolsJSON[middleManFor_X].Id)) > -1
+                            ) {
                                 vm.rawFilter.push(vm.toolsJSON[middleManFor_X]);                           
                             }
                         }
                     }
                 }
+                
                 return this.rawFilter;
             }
         },
 
         //preparing value for included part info
         selectedTool_IncludedPartsValueFilter: function () {
-            var self = this;
+            var self = this;           
             this.selectedTool_IncludedPartsValue = [];
             //Loop and get all part in tool
             for (var i = 0, u = self.toolDetailFromRowClick.PartIds.length; i < u; i++) {

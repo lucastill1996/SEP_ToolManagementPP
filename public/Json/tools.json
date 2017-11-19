@@ -1,144 +1,188 @@
 [
+    {
+        "Id": 1,
+        "Name": "K_6.5_M24",
+        "Shape": "RND",
+        "Size": "D",
+        "Diameter": 5,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 1,
+        "MachineSerial": "PG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D100"
+        ]
+    },
+    {
+        "Id": 2,
+        "Name": "K_3.0_M24",
+        "Shape": "RND",
+        "Size": "MT",
+        "Diameter": 3,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 1,
+        "MachineSerial": "PG100",
+        "Type": "MarkingTool",
+        "PartIds": []
+    },
+    {
+        "Id": 3,
+        "Name": "LL20X10.5_MT",
+        "Shape": "OBRD",
+        "Size": "MT",
+        "Diameter": 0,
+        "Xdimension": 20,
+        "Ydimension": 10.5,
+        "StationNumber": 3,
+        "MachineSerial": "CG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D102",
+            "P102",
+            "S101"
+        ]
+    },
+    {
+        "Id": 4,
+        "Name": "LL10X7",
+        "Shape": "OBRD",
+        "Size": "B",
+        "Diameter": 0,
+        "Xdimension": 10,
+        "Ydimension": 7,
+        "StationNumber": 3,
+        "MachineSerial": "CG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D103",
+            "S102"
+        ]
+    },
+    {
+        "Id": 5,
+        "Name": "0008_01_DREI_F1",
+        "Shape": "SPEC",
+        "Size": "MT",
+        "Diameter": 55.7,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 3,
+        "MachineSerial": "CG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D104",
+            "S103"
+        ]
+    },
+    {
+        "Id": 6,
+        "Name": "RT_0.250X1.000",
+        "Shape": "RECT",
+        "Size": "MT",
+        "Diameter": 0,
+        "Xdimension": 25.4,
+        "Ydimension": 6.35,
+        "StationNumber": 4,
+        "MachineSerial": "SG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D105",
+            "S104"
+        ]
+    },
+    {
+        "Id": 7,
+        "Name": "K_6.5_M24",
+        "Shape": "RND",
+        "Size": "D",
+        "Diameter": 5,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 4,
+        "MachineSerial": "SG100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "P103",
+            "S105"
+        ]
+    },
+    {
+        "Id": 8,
+        "Name": "Q_6.0_M24",
+        "Shape": "SQR",
+        "Size": "MT",
+        "Diameter": 0,
+        "Xdimension": 6,
+        "Ydimension": 6,
+        "StationNumber": 5,
+        "MachineSerial": "BC100",
+        "Type": "MarkingTool",
+        "PartIds": [
+            "D106",
+            "P104"
+        ]
+    },
   {
-    "toolID": "54",
-    "Name": "RD30",
-    "Shape": "RND",
-    "Size": "B",
-    "Diameter": 30,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 0,
-    "MachineSerial": "0",
-    "Type": "Standard Tool",
-    "PartIds": [ "49","20" ]
-  },
-  {
-    "toolID": "55",
-    "Name": "RND_6.0",
-    "Shape": "RND",
-    "Size": "MT",
-    "Diameter": 6,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 2,
-    "MachineSerial": "0",
-    "Type": "Standard Tool",
-    "PartIds": [ "50" ]
-  },
-  {
-    "toolID": "56",
-    "Name": "RND_4.0",
-    "Shape": "RND",
-    "Size": "MT",
-    "Diameter": 2,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 0,
-    "MachineSerial": "0",
-    "Type": "Standard Tool",
-    "PartIds": [ "51" ]
-  },
-  {
-    "toolID": "61",
-    "Name": "K_3.0_M24",
-    "Shape": "RND",
-    "Size": "MT",
-    "Diameter": 3.0,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 21,
-    "MachineSerial": "2",
-    "Type": "Standard Tool",
-    "PartIds": [ "56" ]
-  },
-  {
-    "toolID": "62",
-    "Name": "K_3.3_M24",
-    "Shape": "RND",
-    "Size": "MT",
-    "Diameter": 3.3,
-
-    "StationNumber": 22,
-    "MachineSerial": "2",
-    "Type": "Standard Tool",
-    "PartIds": [ "57" ]
-  },
-  {
-    "toolID": "151",
-    "Name": "LL20X10",
-    "Shape": "OBRD",
-    "Size": "B",
+    "Id": 9,
+    "Name": "R_6.0X4.0_M24",
+    "Shape": "RECT",
+    "Size": "A",
     "Diameter": 0,
-    "Xdimension": 20.0,
-    "Ydimension": 10.0,
-    "StationNumber": 0,
-    "MachineSerial": "0",
-    "Type": "Standard Tool",
-    "PartIds": [ "138" ]
+    "Xdimension": 6,
+    "Ydimension": 4,
+    "StationNumber": 5,
+    "MachineSerial": "BC100",
+    "Type": "MarkingTool",
+    "PartIds": [
+      "D107",
+      "P105"
+    ]
   },
-  {
-    "toolID": "143",
-    "Name": "ETCH",
-    "Shape": "SPEC",
-    "Size": "D",
-    "Diameter": 0.7980,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 0,
-    "MachineSerial": "3",
-    "Type": "Marking Tool",
-    "PartIds": [ "130" ]
-  },
-  {
-    "toolID": "119",
-    "Name": "0013_01_VERSETZ",
-    "Shape": "SPEC",
-    "Size": "C",
-    "Diameter": 0,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 12,
-    "MachineSerial": "4",
-    "Type": "Forming Tool",
-    "PartIds": [ "106" ]
-  },
-  {
-    "toolID": "123",
-    "Name": "0015_01_WARZE",
-    "Shape": "SPEC",
-    "Size": "B",
-    "Diameter": 0,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 8,
-    "MachineSerial": "4",
-    "Type": "Forming Tool",
-    "PartIds": [ "110" ]
-  },
-  {
-    "toolID": "125",
-    "Name": "KNEIFROLLE",
-    "Shape": "SPEC",
-    "Size": "B",
-    "Diameter": 0,
-    "Xdimension": 0.0,
-    "Ydimension": 0.0,
-    "StationNumber": 19,
-    "MachineSerial": "2",
-    "Type": "Wheel Tool",
-    "PartIds": [ "112" ]
-  },
-  {
-    "toolID": "148",
-    "Name": "EDDING",
-    "Shape": "SPEC",
-    "Size": "B",
-    "Diameter": 2.073,
-    "Xdimension": 0.33,
-    "Ydimension": 0.0,
-    "StationNumber": 19,
-    "MachineSerial": "0",
-    "Type": "Wheel Tool",
-    "PartIds": [ "135" ]
-  }
+    {
+        "Id": 10,
+        "Name": "EDDING",
+        "Shape": "SPEC",
+        "Size": "D",
+        "Diameter": 0,
+        "Xdimension": 4.5,
+        "Ydimension": 5,
+        "StationNumber": 2,
+        "MachineSerial": "L100",
+        "Type": "FormingTool",
+        "PartIds": [
+            "P100",
+            "S100"
+        ]
+    },
+    {
+        "Id": 11,
+        "Name": "R8.0",
+        "Shape": "RND",
+        "Size": "D",
+        "Diameter": 7,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 0,
+        "MachineSerial": null,
+        "Type": "WheelTool",
+        "PartIds": []
+    },
+    {
+        "Id": 12,
+        "Name": "0018_SENK_UNTEN",
+        "Shape": "SPEC",
+        "Size": "B",
+        "Diameter": 3.32,
+        "Xdimension": 0,
+        "Ydimension": 0,
+        "StationNumber": 2,
+        "MachineSerial": "L100",
+        "Type": "WheelTool",
+        "PartIds": [
+            "D101",
+            "P101"
+        ]
+    }
 ]
