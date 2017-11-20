@@ -105,12 +105,6 @@ var myVue = new Vue({
                 name: "Hitcount",
                 visible: true,
                 editable: false,
-            },
-            {
-                title: "Owning tool ID",
-                name: "ToolId",
-                visible: true,
-                editable: false,
             }
         ],
         partValues: [],
