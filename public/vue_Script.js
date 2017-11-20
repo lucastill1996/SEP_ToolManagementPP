@@ -35,7 +35,7 @@ var myVue = new Vue({
     },
     data: {
         //misc variable to bind the class for 2 side of the screen, used to assign space
-        leftScreenSize: "col-sm-12",
+        leftScreenSize: "col-sm-11",
         rightScreenSize: "col-sm-6",
         rightScreenShow: false,
 
