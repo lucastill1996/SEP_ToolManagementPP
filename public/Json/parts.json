@@ -1,0 +1,373 @@
+[
+  {
+    "Identifier": "D100",
+    "Type": "Die",
+    "Hitcount": 1948,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "0.2"
+      },
+      {
+        "Key": "Height",
+        "Value": "15.0"
+      },
+      {
+        "Key": "Color",
+        "Value": "Yellow"
+      },
+      {
+        "Key": "Installed",
+        "Value": "True"
+      }
+    ],
+    "ToolId": 1
+  },
+  {
+    "Identifier": "D101",
+    "Type": "Die",
+    "Hitcount": 284,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "8.2"
+      },
+      {
+        "Key": "Height",
+        "Value": "26.5"
+
+      }
+    ],
+    "ToolId": 12
+  },
+  {
+    "Identifier": "D102",
+    "Type": "Die",
+    "Hitcount": 456,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "9.8"
+      },
+      {
+        "Key": "Height",
+        "Value": "5.5"
+
+      }
+    ],
+    "ToolId": 3
+  },
+  {
+    "Identifier": "D103",
+    "Type": "Die",
+    "Hitcount": 120,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "15"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "8"
+
+      }
+    ],
+    "ToolId": 4
+  },
+  {
+    "Identifier": "D104",
+    "Type": "Die",
+    "Hitcount": 659,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "10"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "11.5"
+
+      }
+    ],
+    "ToolId": 5
+  },
+  {
+    "Identifier": "D105",
+    "Type": "Die",
+    "Hitcount": 99,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "11.5"
+
+      }
+    ],
+    "ToolId": 6
+  },
+  {
+    "Identifier": "D106",
+    "Type": "Die",
+    "Hitcount": 438,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "42"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "48"
+
+      }
+    ],
+    "ToolId": 8
+  },
+  {
+    "Identifier": "D107",
+    "Type": "Die",
+    "Hitcount": 923,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "21"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "32"
+
+      }
+    ],
+    "ToolId": 9
+  },
+  {
+    "Identifier": "P100",
+    "Type": "Punch",
+    "Hitcount": 284,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "2.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "13.5"
+
+      }
+    ],
+    "ToolId": 10
+  },
+  {
+    "Identifier": "P101",
+    "Type": "Punch",
+    "Hitcount": 667,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "8.4"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "18"
+
+      }
+    ],
+    "ToolId": 12
+  },
+  {
+    "Identifier": "P102",
+    "Type": "Punch",
+    "Hitcount": 540,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "10"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "8.5"
+
+      }
+    ],
+    "ToolId": 3
+  },
+  {
+    "Identifier": "P103",
+    "Type": "Punch",
+    "Hitcount": 782,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "13"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "44"
+
+      }
+    ],
+    "ToolId": 7
+  },
+  {
+    "Identifier": "P104",
+    "Type": "Punch",
+    "Hitcount": 754,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "5"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "12"
+
+      }
+    ],
+    "ToolId": 8
+  },
+  {
+    "Identifier": "P105",
+    "Type": "Punch",
+    "Hitcount": 560,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "17"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "23"
+
+      }
+    ],
+    "ToolId": 9
+  },
+  {
+    "Identifier": "S100",
+    "Type": "Stripper",
+    "Hitcount": 667,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "3.2"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "23.5"
+
+      }
+    ],
+    "ToolId": 10
+  },
+  {
+    "Identifier": "S101",
+    "Type": "Stripper",
+    "Hitcount": 128,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "10"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "12"
+
+      }
+    ],
+    "ToolId": 3
+  },
+  {
+    "Identifier": "S102",
+    "Type": "Stripper",
+    "Hitcount": 327,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "12"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "18.5"
+
+      }
+    ],
+    "ToolId": 4
+  },
+  {
+    "Identifier": "S103",
+    "Type": "Stripper",
+    "Hitcount": 983,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "22"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "28.5"
+
+      }
+    ],
+    "ToolId": 5
+  },
+  {
+    "Identifier": "S104",
+    "Type": "Stripper",
+    "Hitcount": 43,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "32"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "38"
+
+      }
+    ],
+    "ToolId": 6
+  },
+  {
+    "Identifier": "S105",
+    "Type": "Stripper",
+    "Hitcount": 854,
+    "Attributes": [
+      {
+        "Key": "Clearance",
+        "Value": "13"
+
+      },
+      {
+        "Key": "Height",
+        "Value": "18"
+
+      }
+    ],
+    "ToolId": 7
+  },
+  {
+    "Identifier": "SU123",
+    "Type": "Stripper",
+    "Hitcount": 12317,
+    "Attributes": [],
+    "ToolId": 0
+  }
+]

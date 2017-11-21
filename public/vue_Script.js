@@ -1,24 +1,3 @@
-//form action
-$(function() {
-  
-  // contact form animations
-  $('#bt3').click(function() {
-    $('#contactForm').fadeToggle();
-  })
-  $(document).mouseup(function (e) {
-    var container = $("#contactForm");
-
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.fadeOut();
-    }
-  });
-  
-});
-
-
-
 //Handling row click
 //Method to handle clicked row in vue
 var handleRow = function (event, entry) {
@@ -56,7 +35,7 @@ var myVue = new Vue({
     },
     data: {
         //misc variable to bind the class for 2 side of the screen, used to assign space
-        leftScreenSize: "col-sm-12",
+        leftScreenSize: "col-sm-11",
         rightScreenSize: "col-sm-6",
         rightScreenShow: false,
 
@@ -124,12 +103,6 @@ var myVue = new Vue({
             {
                 title: "Hitcount",
                 name: "Hitcount",
-                visible: true,
-                editable: false,
-            },
-            {
-                title: "Owning tool ID",
-                name: "ToolId",
                 visible: true,
                 editable: false,
             }

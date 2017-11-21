@@ -37,13 +37,18 @@ div.tab {
         }
 
 /* Style the tab content */
-.tabcontent {
+.tabcontentLeft {
     display: none;
     padding: 6px 12px;
     -webkit-animation: fadeEffect 1s;
     animation: fadeEffect 1s;
 }
-
+.tabAddItem {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
 /* Fade in tabs */
 @-webkit-keyframes fadeEffect {
     from {
@@ -65,106 +70,4 @@ div.tab {
     }
 }
 
-#addfiled{
 
- float: right;
-      position: relative;
-      right: 30%;
-  margin-top:5px;
-   margin-right:45px;
-}
-#labelposi{
-
- float: left;
-      position: relative;
-      left: 40%;
-  margin-top:5px;
-   margin-right:45px;
-}
-#addfiled1{
-
-  float:right;
-  margin-top:20px;
-   margin-right:45px;
-}
-
-
-div.tab1 {
-    float: left;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-div.tab1 button {
-    display: block;
-    background-color: inherit;
-    color: black;
-    padding: 22px 16px;
-    outline: none;
-	border: none;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 17px;
-
-	
-}
-
-/* Change background color of buttons on hover */
-div.tab1 button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current "tab button" class */
-div.tab1 button.active {
-    background-color: #ccc;
-}
-
-
-#contactForm { 
-  display: none;
-
-  border: 6px solid ; 
-  padding: 2em;
-  width: 400px;
-  text-align: center;
-  background: #fff;
-  position: fixed;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%) 
-}
-
-input, textarea { 
-
-  font-family: inherit; 
-  text-transform: inherit; 
-  font-size: inherit;
-  
-  display: block; 
-
-  padding: .4em;
-}
-textarea { height: 80px; resize: none; }
-
-.formBtn { 
-  width: 140px;
-  display: inline-block;
-  
-
-  font-weight: 100;
-  font-size: 1.2em;
-  border: none;
-  height: 30px;
-}
-
-
-label {
-    /* Other styling.. */
-    text-align: right;
-    clear: both;
-    float:left;
- 
-}

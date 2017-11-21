@@ -1,0 +1,43 @@
+[
+    {
+        "Serial": "BC100",
+        "Name": "BCe Smart",
+        "ToolIds": [
+            56,
+            9
+        ]
+    },
+    {
+        "Serial": "CG100",
+        "Name": "Combi Genius",
+        "ToolIds": [
+            3,
+            4,
+            5
+        ]
+    },
+    {
+        "Serial": "L100",
+        "Name": "Laserdyne 606D",
+      "ToolIds": [
+        10,
+        12
+      ]
+    },
+    {
+        "Serial": "PG100",
+        "Name": "Punch Genius",
+        "ToolIds": [
+            1,
+            2
+        ]
+    },
+    {
+        "Serial": "SG100",
+        "Name": "Shear Genius",
+        "ToolIds": [
+            6,
+            7
+        ]
+    }
+]
